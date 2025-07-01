@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 14:02:17 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/01 12:59:13 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/01 13:08:09 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,4 +158,6 @@ void	handle_key(mlx_key_data_t keydata, void *param)
 	//handle_mouse_rotation(void *param);
 	if (keydata.key == MLX_KEY_1 && keydata.action == MLX_PRESS)
 		wall_collision(game);
+	if (keydata.key == MLX_KEY_2 && keydata.action == MLX_PRESS)
+		restart_light_anim(game);
 }

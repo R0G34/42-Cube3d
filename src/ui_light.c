@@ -1,40 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ui2_load_animation.c                               :+:      :+:    :+:   */
+/*   ui_light.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 10:58:42 by ajodar            #+#    #+#             */
-/*   Updated: 2025/06/23 13:11:39 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/01 13:10:49 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cube3d.h"
 
 //20250623 
-// Carga tantas texturas como define LIGHT_FRAME_COUNT
-static void	load_light_textures(t_game *game)
-{
-	char	path[128];
-	int		i = 0;
-
-	while (i < LIGHT_FRAME_COUNT)
-	{
-		snprintf(path, sizeof(path), "textures/interface2/light%d.png", i + 1);
-		game->light.frames[i] = mlx_load_png(path);
-		if (!game->light.frames[i])
-		{
-			fprintf(stderr, "Error: loading light frame %d\n", i + 1);
-			exit(EXIT_FAILURE);
-		}
-		i++;
-	}
-}
-
-//20250623 
 // Pinta el frame que toca de luz
-static void	render_light_frame(t_game *game)
+void	render_light_frame(t_game *game)
 {
 	int	x = 0;
 	int	y = 0;
@@ -57,6 +37,26 @@ static void	render_light_frame(t_game *game)
 }
 
 //20250623 
+// Carga tantas texturas como define LIGHT_FRAME_COUNT
+static void	load_light_textures(t_game *game)
+{
+	char	path[128];
+	int		i = 0;
+
+	while (i < LIGHT_FRAME_COUNT)
+	{
+		snprintf(path, sizeof(path), "textures/interface2/light%d.png", i + 1);
+		game->light.frames[i] = mlx_load_png(path);
+		if (!game->light.frames[i])
+		{
+			fprintf(stderr, "Error: loading light frame %d\n", i + 1);
+			exit(EXIT_FAILURE);
+		}
+		i++;
+	}
+}
+
+//20250623 
 // Actualiza el frame correspondiente que toca pintar a continuación
 // Main -> mlx_loop_hook -> light_update
 void	light_update(void *param)
@@ -66,12 +66,10 @@ void	light_update(void *param)
 
 	if (game->light.finished)
 		return;
-
 	delay++;
 	if (delay < LIGHT_ANIM_DELAY)
 		return;
 	delay = 0;
-
 	game->light.current_frame++;
 	if (game->light.current_frame >= LIGHT_FRAME_COUNT)
 	{

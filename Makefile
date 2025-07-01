@@ -20,6 +20,7 @@ CUBE3D_FILES = 			src/main.c \
 						src/cleanup.c \
 						src/handle_keys.c \
 						src/handle_keys_extra.c \
+						src/handle_keys_light.c \
 						src/handle_mouse.c \
 						src/ui_animation.c \
 						src/ui_load_frames.c \

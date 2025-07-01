@@ -67,6 +67,8 @@ void	start_ui_anim(t_game *game);
 // Light
 void	load_light_anim(t_game *game);
 void	light_update(void *param);
+void	render_light_frame(t_game *game);
+void	restart_light_anim(t_game *game);
 
 // Debug (Borrar luego)
 void	print_map(t_map *map);

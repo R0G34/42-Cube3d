@@ -1,20 +1,20 @@
-NO   ./textures/wall-bricks-blue/wall_bricks-blue.png
-SO    ./textures/wall-bricks-blue/wall_bricks-blue.png
+NO   ./textures/wall-bricks-green.png
+SO    ./textures/wall-bricks-green.png
 
 
-WE ./textures/wall-bricks-blue/wall_bricks-blue.png
-F 30,60,90
+WE ./textures/wall-bricks-green.png
+F 5,119,2
 
-C 70,130,180
+C 32,224,36
 
-EA ./textures/wall-bricks-blue/wall_bricks-blue.png
+EA ./textures/wall-bricks-green.png
 
   1111111111111111111111111111111111 
  100000000000000000000000000000011 
   1100000000000000111000000N0000111
  110000000000001111110000000000001 
   110000111100000000000000000000001
-    1111111111111D1111111111111111
+    111111111111000111111111111111
     1100000000000000000000000000111
    1100000000000000000000000000111
     1100000000000000000000000000111
