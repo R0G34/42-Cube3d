@@ -6,11 +6,11 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 12:55:58 by ajodar            #+#    #+#             */
-/*   Updated: 2025/06/08 18:15:35 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/01 10:17:34 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/raycasting.h"
+#include "../include/cube3d.h"
 
 //20250608
 // Esta página ha sido practicamente generada por IA para ayudarme a gestionar las animaciones con raycasting

@@ -6,12 +6,11 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 14:02:17 by ajodar            #+#    #+#             */
-/*   Updated: 2025/06/09 16:44:24 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/01 12:59:13 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cube3d.h"
-#include "../include/raycasting.h"
 
 //20250608
 // Cierra el juego al presionar scape y libera la memoria
@@ -25,45 +24,70 @@ static void	handle_escape(mlx_key_data_t keydata, t_game *game)
 	}
 }
 
+//20250701
+// Actualiza la posición del personaje si está en el mapa y no colisina con paredes
+// main -> mlx_key_hook -> handle_key -> handle_movement -> update_player_position
+void	update_player_position(t_game *game, double next_x, double next_y)
+{
+	if (game->solid_walls)
+	{
+		if (is_inside_map(&game->map, game->player.x, next_y) &&
+			game->map.complete_map[(int)next_y][(int)game->player.x] != '1')
+		{
+			game->player.y = next_y;
+		}
+		if (is_inside_map(&game->map, next_x, game->player.y) &&
+			game->map.complete_map[(int)game->player.y][(int)next_x] != '1')
+		{
+			game->player.x = next_x;
+		}
+	}
+	else
+	{
+		if (is_inside_map(&game->map, next_x, game->player.y))
+			game->player.x = next_x;
+		if (is_inside_map(&game->map, game->player.x, next_y))
+			game->player.y = next_y;
+	}
+}
+
 //20250608
 // El personaje actualiza su localización 
 // main -> mlx_key_hook -> handle_key -> handle_movement
 static void	handle_movement(t_game *game, mlx_key_data_t keydata, double move_speed)
 {
-	double next_x;
-	double next_y;
+	double next_x = game->player.x;
+	double next_y = game->player.y;
 
 	if (keydata.key == MLX_KEY_W)
 	{
-		next_x = game->player.x + game->player.dir_x * move_speed;
-		next_y = game->player.y + game->player.dir_y * move_speed;
+		next_x += game->player.dir_x * move_speed;
+		next_y += game->player.dir_y * move_speed;
 	}
 	else if (keydata.key == MLX_KEY_S)
 	{
-		next_x = game->player.x - game->player.dir_x * move_speed;
-		next_y = game->player.y - game->player.dir_y * move_speed;
+		next_x -= game->player.dir_x * move_speed;
+		next_y -= game->player.dir_y * move_speed;
 	}
 	else
-		return ;
-	if (game->map.complete_map[(int)next_y][(int)game->player.x] != '1')
-		game->player.y = next_y;
-	if (game->map.complete_map[(int)game->player.y][(int)next_x] != '1')
-		game->player.x = next_x;
+		return;
+	update_player_position(game, next_x, next_y);
 	start_ui_anim(game);
 }
+
 
 //20250608
 // El personaje rota sobre su eje actualizando el punto de vista
 // main -> mlx_key_hook -> handle_key -> handle_movement
+// *** Esta función se retirará por el movimiento hecho con el ratón ***
 static void	handle_rotation(t_game *game, mlx_key_data_t keydata)
 {
-	double rot_speed;
+	double rot_speed = ROT_SPEED;
 	double old_dir_x;
 	double old_plane_x;
 
 	if (keydata.key == MLX_KEY_D)
 	{
-		rot_speed = 0.05;
 		old_dir_x = game->player.dir_x;
 		game->player.dir_x = game->player.dir_x * cos(rot_speed) - game->player.dir_y * sin(rot_speed);
 		game->player.dir_y = old_dir_x * sin(rot_speed) + game->player.dir_y * cos(rot_speed);
@@ -73,7 +97,7 @@ static void	handle_rotation(t_game *game, mlx_key_data_t keydata)
 	}
 	else if (keydata.key == MLX_KEY_A)
 	{
-		rot_speed = -0.05;
+		rot_speed = -ROT_SPEED;
 		old_dir_x = game->player.dir_x;
 		game->player.dir_x = game->player.dir_x * cos(rot_speed) - game->player.dir_y * sin(rot_speed);
 		game->player.dir_y = old_dir_x * sin(rot_speed) + game->player.dir_y * cos(rot_speed);
@@ -123,7 +147,7 @@ static void	handle_lateral(t_game *game, mlx_key_data_t keydata, double move_spe
 void	handle_key(mlx_key_data_t keydata, void *param)
 {
 	t_game *game = (t_game *)param;
-	double move_speed = 0.05;
+	double move_speed = MOVE_SPEED;
 
 	handle_escape(keydata, game);
 	if (keydata.action != MLX_PRESS && keydata.action != MLX_REPEAT)
@@ -132,4 +156,6 @@ void	handle_key(mlx_key_data_t keydata, void *param)
 	handle_rotation(game, keydata);
 	//handle_lateral(game, keydata, move_speed);
 	//handle_mouse_rotation(void *param);
+	if (keydata.key == MLX_KEY_1 && keydata.action == MLX_PRESS)
+		wall_collision(game);
 }

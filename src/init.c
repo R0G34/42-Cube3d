@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../include/cube3d.h"
-#include "../include/raycasting.h"
 
 //20250527
 // Inicia la pantallita de mlx y su ventana
@@ -79,6 +78,7 @@ void	init_game_window(t_game *game, char *map_path)
 	print_map(&game->map); // Debug temporal
 	map_validate(&game->map);
 	init_player(game);
+	game->solid_walls = true;
 	init_mlx(game);
 	rc_setup(game);
 }

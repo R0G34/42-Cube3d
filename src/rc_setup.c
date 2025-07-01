@@ -6,11 +6,11 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 12:40:13 by ajodar            #+#    #+#             */
-/*   Updated: 2025/06/23 12:07:52 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/01 10:17:42 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/raycasting.h"
+#include "../include/cube3d.h"
 
 //20250608 
 // cargamos las texturas en mlx

@@ -19,10 +19,11 @@ CUBE3D_FILES = 			src/main.c \
 						src/debug.c \
 						src/cleanup.c \
 						src/handle_keys.c \
+						src/handle_keys_extra.c \
 						src/handle_mouse.c \
 						src/ui_animation.c \
 						src/ui_load_frames.c \
-						src/ui2_load_animation.c \
+						src/ui_light.c \
 						src/map_setup.c \
 						src/map_parse.c \
 						src/map_parse_utils.c \

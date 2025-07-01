@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 17:17:55 by ajodar            #+#    #+#             */
-/*   Updated: 2025/06/09 16:33:41 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/01 10:32:06 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ui_update(void *param)
 	if (!game->ui.is_animating)
 		return;
 	delay++;
-	if (delay < 10)
+	if (delay < UI_ANIM_DELAY)
 		return;
 	delay = 0;
 	game->ui.current_frame++;
@@ -59,6 +59,7 @@ void	ui_update(void *param)
 	}
 	ui_render_frame(game);
 }
+
 
 //20250608
 // Permite comenzar la secuencia de la animación para la ui al moverse

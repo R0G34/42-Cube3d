@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_mouse.c                                     :+:      :+:    :+:   */
+/*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/09 12:58:22 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/01 10:17:16 by ajodar           ###   ########.fr       */
+/*   Created: 2025/06/08 13:00:11 by ajodar            #+#    #+#             */
+/*   Updated: 2025/07/01 10:40:07 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cube3d.h"
+#ifndef DEFINE_H
+# define DEFINE_H
 
-/*
-void handle_mouse(void *param)
-{
+// Dimensiones de la pantalla
+# define WIDTH 800
+# define HEIGHT 600
+# define FOV 260.0
 
-}
-*/
+// Movement & Rotation
+# define MOVE_SPEED 0.05
+# define ROT_SPEED 0.05
 
+// Animación de UI
+# define UI_ANIM_DELAY 10
 
+// Animación de luz
+# define LIGHT_FRAME_COUNT 20
+# define LIGHT_ANIM_DELAY 600
 
-
-
+#endif
