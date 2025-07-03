@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 14:02:17 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/01 13:08:09 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/03 20:37:22 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,8 @@ static void	handle_movement(t_game *game, mlx_key_data_t keydata, double move_sp
 	start_ui_anim(game);
 }
 
-
 //20250608
-// El personaje rota sobre su eje actualizando el punto de vista
+// El personaje rota con teclas sobre su eje actualizando el punto de vista
 // main -> mlx_key_hook -> handle_key -> handle_movement
 // *** Esta función se retirará por el movimiento hecho con el ratón ***
 static void	handle_rotation(t_game *game, mlx_key_data_t keydata)
@@ -86,7 +85,7 @@ static void	handle_rotation(t_game *game, mlx_key_data_t keydata)
 	double old_dir_x;
 	double old_plane_x;
 
-	if (keydata.key == MLX_KEY_D)
+	if (keydata.key == MLX_KEY_E)
 	{
 		old_dir_x = game->player.dir_x;
 		game->player.dir_x = game->player.dir_x * cos(rot_speed) - game->player.dir_y * sin(rot_speed);
@@ -95,7 +94,7 @@ static void	handle_rotation(t_game *game, mlx_key_data_t keydata)
 		game->player.plane_x = game->player.plane_x * cos(rot_speed) - game->player.plane_y * sin(rot_speed);
 		game->player.plane_y = old_plane_x * sin(rot_speed) + game->player.plane_y * cos(rot_speed);
 	}
-	else if (keydata.key == MLX_KEY_A)
+	else if (keydata.key == MLX_KEY_Q)
 	{
 		rot_speed = -ROT_SPEED;
 		old_dir_x = game->player.dir_x;
@@ -108,17 +107,18 @@ static void	handle_rotation(t_game *game, mlx_key_data_t keydata)
 	start_ui_anim(game);
 }
 
-/*
-//20250608
+//20250703
 // El personaje se mueve de manera lateral con esto activo
 // main -> mlx_key_hook -> handle_key -> handle_rotation
 static void	handle_lateral(t_game *game, mlx_key_data_t keydata, double move_speed)
 {
-	double side_x;
-	double side_y;
-	double next_x;
-	double next_y;
+	double	side_x;
+	double	side_y;
+	double	next_x;
+	double	next_y;
 
+	side_x = 0;
+	side_y = 0;
 	if (keydata.key == MLX_KEY_D)
 	{
 		side_x = -game->player.dir_y;
@@ -133,13 +133,10 @@ static void	handle_lateral(t_game *game, mlx_key_data_t keydata, double move_spe
 		return;
 	next_x = game->player.x + side_x * move_speed;
 	next_y = game->player.y + side_y * move_speed;
-	if (game->map.complete_map[(int)next_y][(int)game->player.x] != '1')
-		game->player.y = next_y;
-	if (game->map.complete_map[(int)game->player.y][(int)next_x] != '1')
-		game->player.x = next_x;
+	update_player_position(game, next_x, next_y);
 	start_ui_anim(game);
 }
-*/
+
 
 //20250608
 // Gestiona la salida del programa con scape, el movimiento, rotación y animación de la interfaz
@@ -154,8 +151,7 @@ void	handle_key(mlx_key_data_t keydata, void *param)
 		return;
 	handle_movement(game, keydata, move_speed);
 	handle_rotation(game, keydata);
-	//handle_lateral(game, keydata, move_speed);
-	//handle_mouse_rotation(void *param);
+	handle_lateral(game, keydata, move_speed);
 	if (keydata.key == MLX_KEY_1 && keydata.action == MLX_PRESS)
 		wall_collision(game);
 	if (keydata.key == MLX_KEY_2 && keydata.action == MLX_PRESS)

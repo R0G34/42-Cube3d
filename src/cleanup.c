@@ -83,7 +83,7 @@ void	cleanup_game(t_game *game)
 	if (game->ui.img)
 		mlx_delete_image(game->mlx, game->ui.img);
 	i = 0;
-	while (i < 8)
+	while (i < 20)
 	{
 		if (game->light.frames[i])
 			mlx_delete_texture(game->light.frames[i]);

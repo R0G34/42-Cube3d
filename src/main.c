@@ -12,7 +12,7 @@
 
 #include "../include/cube3d.h"
 
-//20250527
+//20250703
 int	main(int argc, char **argv)
 {
 	t_game	game;
@@ -21,11 +21,11 @@ int	main(int argc, char **argv)
 		return (1);
 	init_game_window(&game, argv[1]);
 	mlx_key_hook(game.mlx, handle_key, &game);
-	mlx_set_cursor_mode(game.mlx, MLX_MOUSE_DISABLED);
-	//mlx_loop_hook(game.mlx, handle_mouse, &game);
 	mlx_loop_hook(game.mlx, render, &game);
 	mlx_loop_hook(game.mlx, ui_update, &game);
-	mlx_loop_hook(game.mlx, light_update, &game);	//Añadir este loop al main
+	mlx_loop_hook(game.mlx, light_update, &game);
+	mlx_loop_hook(game.mlx, draw_minimap, &game);
+	mlx_cursor_hook(game.mlx, handle_mouse_rotation, &game);
 	mlx_loop(game.mlx);
 	return (EXIT_SUCCESS);
 }

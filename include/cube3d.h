@@ -53,10 +53,12 @@ void	perform_dda(t_ray *ray, t_game *game);
 void	draw_column(t_game *game, int x, t_ray *ray);
 void	render(void *param);
 void	render_textured_column(t_game *game, t_ray *ray, mlx_texture_t *tex, int x, int tex_x);
+void	draw_minimap(void *param);
 
 // Input
 void	handle_key(mlx_key_data_t keydata, void *param);
-//void	handle_mouse_rotation(void *param);
+void	handle_mouse_rotation(double xpos, double ypos, void *param);
+void	recenter_mouse(void *param);
 
 // UI
 void	load_ui_frames(t_game *game);

@@ -35,7 +35,8 @@ CUBE3D_FILES = 			src/main.c \
 						src/rc_setup.c \
 						src/rc_render.c \
 						src/rc_draw.c \
-						src/rc_draw_utils.c
+						src/rc_draw_utils.c \
+						src/minimap_draw.c
 
 GET_NEXT_LINE_FILES = 	src/get_next_line/get_next_line.c\
 						src/get_next_line/get_next_line_utils.c

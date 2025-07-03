@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 13:00:11 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/01 10:40:07 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/03 20:27:35 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,10 @@
 // Animación de luz
 # define LIGHT_FRAME_COUNT 20
 # define LIGHT_ANIM_DELAY 600
+
+// Minimap
+# define MINIMAP_SCALE 6
+# define MINIMAP_OFFSET_X 10
+# define MINIMAP_OFFSET_Y (HEIGHT + 10)
 
 #endif

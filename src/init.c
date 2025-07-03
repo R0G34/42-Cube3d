@@ -17,13 +17,18 @@
 // main -> init_game_window -> init_mlx
 static void	init_mlx(t_game *game)
 {
-	game->mlx = mlx_init(WIDTH, HEIGHT, "Terto3D", true);
+	int minimap_height;
+	int total_height;
+
+	minimap_height = game->map.height * MINIMAP_SCALE + 10;
+	total_height = HEIGHT + minimap_height;
+	game->mlx = mlx_init(WIDTH, total_height, "Terto3D", true);
 	if (!game->mlx)
 	{
 		fprintf(stderr, "Error: mlx_init failed\n");
 		exit(EXIT_FAILURE);
 	}
-	game->img = mlx_new_image(game->mlx, WIDTH, HEIGHT);
+	game->img = mlx_new_image(game->mlx, WIDTH, total_height);
 	if (!game->img)
 	{
 		mlx_terminate(game->mlx);
@@ -37,6 +42,7 @@ static void	init_mlx(t_game *game)
 		exit(EXIT_FAILURE);
 	}
 }
+
 
 //20250527
 // Busca los colores asignados y pinta el suelo y el cielo
