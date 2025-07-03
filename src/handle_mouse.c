@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 12:58:22 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/03 20:19:55 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/03 21:03:27 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	handle_mouse_rotation(double xpos, double ypos, void *param)
 	delta_x = xpos - last_x;
 	if (delta_x != 0)
 		rotate_player(game, delta_x * sensitivity);
-	//recenter_mouse(game);
 }
 
 

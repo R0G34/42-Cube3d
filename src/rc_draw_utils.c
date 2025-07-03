@@ -6,14 +6,14 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 09:16:49 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/03 10:04:40 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/03 20:50:56 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cube3d.h"
 
 //20250703
-// 
+// main -> render -> rc_render_frame -> cast_ray -> draw_column -> render_textured_column -> draw_column_loop
 static void	draw_texture_pixel(t_game *game, mlx_texture_t *tex, t_tex_render_data *data, int y)
 {
 	int			tex_y;
