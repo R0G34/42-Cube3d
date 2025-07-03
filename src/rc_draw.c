@@ -6,52 +6,11 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 12:55:58 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/01 10:17:34 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/03 10:05:10 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cube3d.h"
-
-//20250608
-// Esta página ha sido practicamente generada por IA para ayudarme a gestionar las animaciones con raycasting
-// No es como se va a gestionar raycasting en principio
-
-//20250608
-// main -> render -> rc_render_frame -> cast_ray -> draw_column -> render textured_column -> compute_texture_step
-static void	compute_texture_step(t_ray *ray, mlx_texture_t *tex,
-								double *tex_step, double *tex_pos)
-{
-	*tex_step = (double)tex->height / ray->line_height;
-	*tex_pos = (ray->draw_start - HEIGHT / 2 + ray->line_height / 2) * (*tex_step);
-}
-
-//20250608
-// main -> render -> rc_render_frame -> cast_ray -> draw_column -> render textured_column
-static void	render_textured_column(t_game *game, t_ray *ray,
-								mlx_texture_t *tex, int x, int tex_x)
-{
-	double		tex_step;
-	double		tex_pos;
-	int			y;
-	int			tex_y;
-	uint8_t		*pixel;
-	uint32_t	color;
-
-	compute_texture_step(ray, tex, &tex_step, &tex_pos);
-	y = ray->draw_start;
-	while (y < ray->draw_end)
-	{
-		tex_y = (int)tex_pos;
-		if (tex_y >= 0 && tex_y < (int)tex->height)
-		{
-			pixel = &tex->pixels[4 * (tex_y * tex->width + tex_x)];
-			color = (pixel[0] << 24) | (pixel[1] << 16) | (pixel[2] << 8) | pixel[3];
-			mlx_put_pixel(game->img, x, y, color);
-		}
-		tex_pos += tex_step;
-		y++;
-	}
-}
 
 //20250608
 // main -> render -> rc_render_frame -> cast_ray -> draw_column -> compute_texture_x

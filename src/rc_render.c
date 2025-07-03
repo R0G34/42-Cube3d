@@ -6,18 +6,14 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 12:39:59 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/01 10:17:38 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/03 09:10:06 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cube3d.h"
 
 //20250608
-// Esta página ha sido practicamente generada por IA para ayudarme a gestionar las animaciones con raycasting
-// No es como se va a gestionar raycasting en principio
-
-//20250608
-// main -> render -> rc_render_frame -> cast_ray -> setup_ray -> init_ray_direction
+// main -> render -> cast_ray -> init_ray_direction
 static void	init_ray_direction(t_ray *ray, t_game *game, int x)
 {
 	ray->camera_x = 2 * x / (double)WIDTH - 1;
@@ -31,7 +27,7 @@ static void	init_ray_direction(t_ray *ray, t_game *game, int x)
 }
 
 //20250608
-// main -> render -> rc_render_frame -> cast_ray -> setup_ray -> init_ray_steps
+// main -> render -> cast_ray -> init_ray_steps
 static void	init_ray_steps(t_ray *ray, t_game *game)
 {
 	if (ray->ray_dir_x < 0)
@@ -57,7 +53,8 @@ static void	init_ray_steps(t_ray *ray, t_game *game)
 }
 
 //20250608
-// main -> render -> rc_render_frame -> cast_ray -> perform_dda
+// Hace el calculo que detecta la colisión con las paredes
+// main -> render -> cast_ray -> perform_dda
 void	perform_dda(t_ray *ray, t_game *game)
 {
 	while (!ray->hit)
@@ -80,43 +77,29 @@ void	perform_dda(t_ray *ray, t_game *game)
 }
 
 //20250608
-// main -> render -> rc_render_frame -> cast_ray -> setup_ray
-void	setup_ray(t_ray *ray, t_game *game, int x)
-{
-	init_ray_direction(ray, game, x);
-	init_ray_steps(ray, game);
-}
-
-//20250608
-// main -> render -> rc_render_frame -> cast_ray
+// main -> render -> cast_ray
 void	cast_ray(t_game *game, int x)
 {
 	t_ray	ray;
 
-	setup_ray(&ray, game, x);
+	init_ray_direction(&ray, game, x);
+	init_ray_steps(&ray, game);
 	perform_dda(&ray, game);
 	draw_column(game, x, &ray);
-}
-
-//20250608
-// main -> render -> rc_render_frame
-void	rc_render_frame(t_game *game)
-{
-	init_background(game); // ← esto limpia todo y deja el fondo
-	int	x = 0;
-
-	while (x < WIDTH)
-	{
-		cast_ray(game, x);
-		x++;
-	}
 }
 
 //20250608
 // main -> render
 void	render(void *param)
 {
-	t_game *game = (t_game *)param;
+	t_game	*game = (t_game *)param;
+	int		x;
 
-	rc_render_frame(game);
+	init_background(game);
+	x = 0;
+	while (x < WIDTH)
+	{
+		cast_ray(game, x);
+		x++;
+	}
 }

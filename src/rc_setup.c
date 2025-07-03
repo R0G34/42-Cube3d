@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 12:40:13 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/01 10:17:42 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/01 16:54:43 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ void	rc_setup(t_game *game)
 {
 	load_wall_textures(game);
 	load_ui_frames(game);
-	load_light_anim(game);		//Añadido para iniciar la animación de la luz
+	load_light_anim(game);
 	init_background(game);
 }

@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 10:13:42 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/01 11:03:15 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/03 09:52:31 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,15 @@ typedef struct s_ray {
 	int		draw_start;
 	int		draw_end;
 }	t_ray;
+
+typedef struct s_tex_render_data
+{
+	double		tex_step;
+	double		tex_pos;
+	int			x;
+	int			tex_x;
+}	t_tex_render_data;
+
 
 typedef struct s_game {
 	mlx_t			*mlx;
