@@ -30,7 +30,7 @@ static char	*sanitize_line(const char *src, int width)
 		if (c == '0' || c == '1' || \
 			c == 'N' || c == 'S' || \
 			c == 'E' || c == 'W' || \
-			c == ' ')
+			c == 'D' || c == ' ')
 			dst[i] = c;
 		else
 			dst[i] = ' ';

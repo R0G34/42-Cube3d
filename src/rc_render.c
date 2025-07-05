@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 12:39:59 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/03 20:14:42 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/05 12:13:11 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ static void	init_ray_steps(t_ray *ray, t_game *game)
 // main -> render -> cast_ray -> perform_dda
 void	perform_dda(t_ray *ray, t_game *game)
 {
+	char tile;
+
 	while (!ray->hit)
 	{
 		if (ray->side_dist_x < ray->side_dist_y)
@@ -71,7 +73,8 @@ void	perform_dda(t_ray *ray, t_game *game)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (game->map.complete_map[ray->map_y][ray->map_x] == '1')
+		tile = game->map.complete_map[ray->map_y][ray->map_x];
+		if (tile == '1' || tile == 'D')
 			ray->hit = 1;
 	}
 }

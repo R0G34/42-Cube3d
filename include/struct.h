@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 10:13:42 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/03 21:00:11 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/05 12:54:21 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,12 @@ typedef struct s_tex_render_data
 	int			tex_x;
 }	t_tex_render_data;
 
+typedef struct s_door {
+	int		x;
+	int		y;
+	int		frame; // 0 cerrado, 3 abierto
+	bool	opening;
+}	t_door;
 
 typedef struct s_game {
 	mlx_t			*mlx;
@@ -96,8 +102,12 @@ typedef struct s_game {
 	mlx_texture_t	*tex_so;
 	mlx_texture_t	*tex_we;
 	mlx_texture_t	*tex_ea;
+	mlx_texture_t	*door[4];
+	//t_door			doors[MAX_DOORS];
 	t_ui_anim		ui;
 	t_light_anim	light;
 }	t_game;
+
+
 
 #endif

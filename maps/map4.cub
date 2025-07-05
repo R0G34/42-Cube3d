@@ -1,0 +1,22 @@
+NO   ./textures/wall-bricks-green.png
+SO    ./textures/wall-bricks-green.png
+
+
+WE ./textures/wall-bricks-green.png
+F 5,119,2
+
+C 32,224,36
+
+EA ./textures/wall-bricks-green.png
+
+11111
+10001
+10S01
+10001
+10001
+11D11
+10001
+10001
+10001
+10001
+11111

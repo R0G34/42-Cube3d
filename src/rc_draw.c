@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 12:55:58 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/03 10:05:10 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/05 12:14:10 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ static int	compute_texture_x(t_game *game, t_ray *ray, mlx_texture_t *tex)
 // main -> render -> rc_render_frame -> cast_ray -> draw_column -> select_texture
 static mlx_texture_t	*select_texture(t_game *game, t_ray *ray)
 {
+	char		tile;
+
+	tile = game->map.complete_map[ray->map_y][ray->map_x];
+	if (tile == 'D')
+		return (game->door[0]);
 	if (ray->side == 0)
 	{
 		if (ray->ray_dir_x < 0)

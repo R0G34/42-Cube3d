@@ -37,12 +37,22 @@ static int	is_valid_map_line(const char *line)
 
 	while (line[i] && line[i] != '\n')
 	{
-		if (!ft_strchr("01NSEW ", line[i]))
+		char c = line[i];
+		if (c == '\r')
+		{
+			i++;
+			continue;
+		}
+		if (!(c == '0' || c == '1' || c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == 'D' || c == ' '))
+		{
+			fprintf(stderr, "Invalid char: '%c' (ascii %d) at pos %d\n", c, c, i);
 			return (0);
+		}
 		i++;
 	}
 	return (1);
 }
+
 
 //20250705
 // Valida los caracteres del mapa
@@ -51,18 +61,18 @@ int	prevalidate_map_file(const char *filepath)
 {
 	int		fd;
 	char	*line;
-	int		map_started;
 
-	map_started = 0;
 	fd = open(filepath, O_RDONLY);
 	if (fd < 0)
 		return (perror("open"), 1);
 	while ((line = get_next_line(fd)))
 	{
-		if (!map_started && is_header_line(line))
-			{ free(line); continue; }
-		map_started = 1;
-		if (map_started && !is_valid_map_line(line))
+		if (is_header_line(line)) // Saltamos líneas del encabezado
+		{
+			free(line);
+			continue;
+		}
+		if (!is_valid_map_line(line))
 		{
 			fprintf(stderr, "Error: Invalid character in map.\n");
 			free(line);
@@ -74,6 +84,7 @@ int	prevalidate_map_file(const char *filepath)
 	close(fd);
 	return (0);
 }
+
 
 //20250603
 // Confirma la posición inicial del jugador en el mapa para hacer luego flood fill desde ahí
