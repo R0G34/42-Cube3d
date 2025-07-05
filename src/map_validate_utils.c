@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 11:26:58 by ajodar            #+#    #+#             */
-/*   Updated: 2025/06/07 10:42:42 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/05 10:47:51 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 // main -> init_game_window -> map_validate
 static int	validate_texture_path(char *path)
 {
-	mlx_texture_t *tex;
+	mlx_texture_t	*tex;
 
 	tex = mlx_load_png(path);
 	if (!tex)
@@ -34,11 +34,15 @@ static int	validate_texture_path(char *path)
 // main -> init_game_window -> map_validate
 static int	validate_rgb_format(uint32_t color, const char *label)
 {
-	int r = (color >> 24) & 0xFF;
-	int g = (color >> 16) & 0xFF;
-	int b = (color >> 8) & 0xFF;
-	int a = color & 0xFF;
+	int		r;
+	int		g;
+	int		b;
+	int		a;
 
+	r = (color >> 24) & 0xFF;
+	g = (color >> 16) & 0xFF;
+	b = (color >> 8) & 0xFF;
+	a = color & 0xFF;
 	if (a != 0xFF)
 	{
 		printf("Error: %s alpha not valid: %02X\n", label, a);

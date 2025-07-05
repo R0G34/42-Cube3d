@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 10:40:47 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/01 12:59:07 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/05 10:50:09 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static bool	is_surroundings_valid(t_map *map, int mx, int my, double x, double y
 // main -> mlx_key_hook -> handle_key -> handle_movement -> update_player_position -> is_inside_map
 static bool	is_core_tile_open(t_map *map, int map_x, int map_y)
 {
-	int row_len;
+	int		row_len;
 
 	if (map_y < 0 || map_y >= map->height)
 		return (false);
@@ -93,8 +93,8 @@ static bool	is_core_tile_open(t_map *map, int map_x, int map_y)
 // main -> mlx_key_hook -> handle_key -> handle_movement -> update_player_position -> is_inside_map
 bool	is_inside_map(t_map *map, double x, double y)
 {
-	int map_x;
-	int map_y;
+	int		map_x;
+	int		map_y;
 
 	map_x = (int)x;
 	map_y = (int)y;

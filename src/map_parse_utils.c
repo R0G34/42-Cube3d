@@ -17,7 +17,7 @@
 // main -> init_game_window -> map_parse -> parse_texture_colors -> parse_texture -> clean_texture
 static int	clean_texture(char **texture_field, const char *prefix, char *line)
 {
-	char *clean;
+	char	*clean;
 
 	if (*texture_field != NULL)
 		return (0);
@@ -34,7 +34,6 @@ static int	parse_texture(t_map *map, char *line)
 {
 	while (*line == ' ' || *line == '\t')
 		line++;
-
 	if (!ft_strncmp(line, "NO ", 3))
 		return clean_texture(&map->texture_no, "NO ", line);
 	if (!ft_strncmp(line, "SO ", 3))
@@ -43,7 +42,6 @@ static int	parse_texture(t_map *map, char *line)
 		return clean_texture(&map->texture_we, "WE ", line);
 	if (!ft_strncmp(line, "EA ", 3))
 		return clean_texture(&map->texture_ea, "EA ", line);
-
 	return (0);
 }
 
@@ -54,6 +52,7 @@ uint32_t	parse_rgb(const char *str)
 {
 	char	**split;
 	int		r, g, b, i;
+
 	split = ft_split(str, ',');
 	if (!split || !split[0] || !split[1] || !split[2])
 		return (0);

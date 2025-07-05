@@ -17,8 +17,8 @@
 // main -> init_game_window -> init_mlx
 static void	init_mlx(t_game *game)
 {
-	int minimap_height;
-	int total_height;
+	int		minimap_height;
+	int		total_height;
 
 	minimap_height = game->map.height * MINIMAP_SCALE + 10;
 	total_height = HEIGHT + minimap_height;

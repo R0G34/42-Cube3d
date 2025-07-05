@@ -32,8 +32,9 @@ void	print_map_copy(char **map)
 // main -> init_game_window -> print_map
 void	print_map(t_map *map)
 {
-	int y = 0;
+	int y;
 
+	y = 0;
 	printf("\nMapa (%d x %d):\n", map->width, map->height);
 	while (y < map->height)
 	{

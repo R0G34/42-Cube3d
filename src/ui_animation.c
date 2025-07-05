@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 17:17:55 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/01 10:32:06 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/05 10:46:16 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 // main -> mlx_loop_hook -> ui_update -> ui_render_frame
 static void	ui_render_frame(t_game *game)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
 
 	mlx_delete_image(game->mlx, game->ui.img);
 	game->ui.img = mlx_texture_to_image(game->mlx,
@@ -43,7 +43,7 @@ static void	ui_render_frame(t_game *game)
 void	ui_update(void *param)
 {
 	t_game *game = (t_game *)param;
-	static int delay = 0;
+	static int	delay = 0;
 
 	if (!game->ui.is_animating)
 		return;

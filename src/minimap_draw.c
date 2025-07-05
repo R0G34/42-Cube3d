@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 19:56:42 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/03 20:47:14 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/05 10:45:19 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 // main -> draw_minimap -> draw_minimap_player -> draw_minimap_player_dot
 static void	draw_minimap_player_dot(t_game *game, int px, int py)
 {
-	int	x, y;
+	int		x;
+	int		y;
 
 	y = -1;
 	while (y <= 1)
@@ -35,10 +36,10 @@ static void	draw_minimap_player_dot(t_game *game, int px, int py)
 // main -> draw_minimap -> draw_minimap_player
 static void	draw_minimap_player(t_game *game)
 {
-	int	px;
-	int	py;
-	int dx;
-	int dy;
+	int		px;
+	int		py;
+	int		dx;
+	int		dy;
 
 	px = (int)(game->player.x * MINIMAP_SCALE) + MINIMAP_OFFSET_X;
 	py = (int)(game->player.y * MINIMAP_SCALE) + MINIMAP_OFFSET_Y;
@@ -52,10 +53,10 @@ static void	draw_minimap_player(t_game *game)
 // main -> draw_minimap -> draw_minimap_tile
 static void	draw_minimap_tile(t_game *game, int map_x, int map_y, uint32_t color)
 {
-	int	x;
-	int	y;
-	int	start_x;
-	int	start_y;
+	int		x;
+	int		y;
+	int		start_x;
+	int		start_y;
 
 	start_x = map_x * MINIMAP_SCALE + MINIMAP_OFFSET_X;
 	start_y = map_y * MINIMAP_SCALE + MINIMAP_OFFSET_Y;
@@ -77,8 +78,8 @@ static void	draw_minimap_tile(t_game *game, int map_x, int map_y, uint32_t color
 void	draw_minimap(void *param)
 {
 	t_game	*game = (t_game *)param;
-	int	map_y;
-	int	map_x;
+	int		map_y;
+	int		map_x;
 
 	map_y = 0;
 	while (map_y < game->map.height)

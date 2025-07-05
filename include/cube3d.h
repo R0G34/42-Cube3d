@@ -45,6 +45,7 @@ int		parse_texture_colors(t_map *map, char *line);
 int		map_validate(t_map *map);
 int		validate_walls(char **map, int start_x, int start_y);
 int		validate_colors_and_textures(t_map *map);
+int		prevalidate_map_file(const char *filepath);
 
 // Raycasting
 void	rc_setup(t_game *game);
@@ -58,7 +59,13 @@ void	draw_minimap(void *param);
 // Input
 void	handle_key(mlx_key_data_t keydata, void *param);
 void	handle_mouse_rotation(double xpos, double ypos, void *param);
-void	recenter_mouse(void *param);
+void	recenter_mouse(t_game *game);
+
+// Move
+void	handle_lateral(t_game *game, mlx_key_data_t keydata, double move_speed);
+void	handle_rotation(t_game *game, mlx_key_data_t keydata);
+void	handle_movement(t_game *game, mlx_key_data_t keydata, double move_speed);
+void	update_player_position(t_game *game, double next_x, double next_y);
 
 // UI
 void	load_ui_frames(t_game *game);

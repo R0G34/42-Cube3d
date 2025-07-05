@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 11:03:45 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/03 21:02:12 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/05 11:37:03 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,11 @@ int	map_setup(t_map *map, char *map_name)
 	build_map_path(full_path, map_name, sizeof(full_path));
 	if (validate_map_path(full_path) != 0)
 		exit(EXIT_FAILURE);
+	if (prevalidate_map_file(full_path) != 0)
+		exit(EXIT_FAILURE);
 	if (map_parse(map, full_path) != 0)
 		exit(EXIT_FAILURE);
 	return (0);
 }
+
 

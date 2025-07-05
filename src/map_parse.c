@@ -42,7 +42,7 @@ static char	*sanitize_line(const char *src, int width)
 	return (dst);
 }
 
-//20250604
+//20250705
 // Completa con espacios el array del mapa
 // main -> init_game_window -> map_parse -> pad_map_lines
 static void	pad_map_lines(char **map_lines, int total_lines, int width)
@@ -61,6 +61,7 @@ static void	pad_map_lines(char **map_lines, int total_lines, int width)
 		i++;
 	}
 }
+
 
 //20250604
 // Ignora las líneas que no tengan información útil

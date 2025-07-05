@@ -1,0 +1,127 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handle_keys_move.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/05 09:33:05 by ajodar            #+#    #+#             */
+/*   Updated: 2025/07/05 10:49:47 by ajodar           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../include/cube3d.h"
+
+//20250701
+// Actualiza la posición del personaje si está en el mapa y no colisina con paredes
+// main -> mlx_key_hook -> handle_key -> handle_movement -> update_player_position
+void	update_player_position(t_game *game, double next_x, double next_y)
+{
+	if (game->solid_walls)
+	{
+		if (is_inside_map(&game->map, game->player.x, next_y) &&
+			game->map.complete_map[(int)next_y][(int)game->player.x] != '1')
+		{
+			game->player.y = next_y;
+		}
+		if (is_inside_map(&game->map, next_x, game->player.y) &&
+			game->map.complete_map[(int)game->player.y][(int)next_x] != '1')
+		{
+			game->player.x = next_x;
+		}
+	}
+	else
+	{
+		if (is_inside_map(&game->map, next_x, game->player.y))
+			game->player.x = next_x;
+		if (is_inside_map(&game->map, game->player.x, next_y))
+			game->player.y = next_y;
+	}
+}
+
+//20250608
+// El personaje actualiza su localización 
+// main -> mlx_key_hook -> handle_key -> handle_movement
+void	handle_movement(t_game *game, mlx_key_data_t keydata, double move_speed)
+{
+	double next_x;
+	double next_y;
+
+	next_x = game->player.x;
+	next_y = game->player.y;
+	if (keydata.key == MLX_KEY_W)
+	{
+		next_x += game->player.dir_x * move_speed;
+		next_y += game->player.dir_y * move_speed;
+	}
+	else if (keydata.key == MLX_KEY_S)
+	{
+		next_x -= game->player.dir_x * move_speed;
+		next_y -= game->player.dir_y * move_speed;
+	}
+	else
+		return;
+	update_player_position(game, next_x, next_y);
+	start_ui_anim(game);
+}
+
+//20250608
+// El personaje rota con teclas sobre su eje actualizando el punto de vista
+// main -> mlx_key_hook -> handle_key -> handle_movement
+void	handle_rotation(t_game *game, mlx_key_data_t keydata)
+{
+	double rot_speed = ROT_SPEED;
+	double old_dir_x;
+	double old_plane_x;
+
+	if (keydata.key == MLX_KEY_E)
+	{
+		old_dir_x = game->player.dir_x;
+		game->player.dir_x = game->player.dir_x * cos(rot_speed) - game->player.dir_y * sin(rot_speed);
+		game->player.dir_y = old_dir_x * sin(rot_speed) + game->player.dir_y * cos(rot_speed);
+		old_plane_x = game->player.plane_x;
+		game->player.plane_x = game->player.plane_x * cos(rot_speed) - game->player.plane_y * sin(rot_speed);
+		game->player.plane_y = old_plane_x * sin(rot_speed) + game->player.plane_y * cos(rot_speed);
+	}
+	else if (keydata.key == MLX_KEY_Q)
+	{
+		rot_speed = -ROT_SPEED;
+		old_dir_x = game->player.dir_x;
+		game->player.dir_x = game->player.dir_x * cos(rot_speed) - game->player.dir_y * sin(rot_speed);
+		game->player.dir_y = old_dir_x * sin(rot_speed) + game->player.dir_y * cos(rot_speed);
+		old_plane_x = game->player.plane_x;
+		game->player.plane_x = game->player.plane_x * cos(rot_speed) - game->player.plane_y * sin(rot_speed);
+		game->player.plane_y = old_plane_x * sin(rot_speed) + game->player.plane_y * cos(rot_speed);
+	}
+	start_ui_anim(game);
+}
+
+//20250703
+// El personaje se mueve de manera lateral
+// main -> mlx_key_hook -> handle_key -> handle_rotation
+void	handle_lateral(t_game *game, mlx_key_data_t keydata, double move_speed)
+{
+	double	side_x;
+	double	side_y;
+	double	next_x;
+	double	next_y;
+
+	side_x = 0;
+	side_y = 0;
+	if (keydata.key == MLX_KEY_D)
+	{
+		side_x = -game->player.dir_y;
+		side_y = game->player.dir_x;
+	}
+	else if (keydata.key == MLX_KEY_A)
+	{
+		side_x = game->player.dir_y;
+		side_y = -game->player.dir_x;
+	}
+	else
+		return;
+	next_x = game->player.x + side_x * move_speed;
+	next_y = game->player.y + side_y * move_speed;
+	update_player_position(game, next_x, next_y);
+	start_ui_anim(game);
+}

@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 09:16:49 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/03 20:50:56 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/05 10:45:42 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,9 @@ static void	compute_texture_step(t_ray *ray, mlx_texture_t *tex, double *tex_ste
 // main -> render -> rc_render_frame -> cast_ray -> draw_column -> render_textured_column -> draw_column_loop
 static void	draw_column_loop(t_game *game, t_ray *ray, mlx_texture_t *tex, t_tex_render_data *data)
 {
-	int	y = ray->draw_start;
+	int		y;
 
+	y = ray->draw_start;
 	while (y < ray->draw_end)
 	{
 		draw_texture_pixel(game, tex, data, y);
