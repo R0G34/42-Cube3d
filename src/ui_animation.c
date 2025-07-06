@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 17:17:55 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/05 10:46:16 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/06 11:00:35 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ static void	ui_render_frame(t_game *game)
 		game->ui.frames[game->ui.current_frame]);
 	if (!game->ui.img)
 	{
-		fprintf(stderr, "Error: can't animate interface\n");
+		print_error("Error: can't animate interface\n");
 		exit(EXIT_FAILURE);
 	}
 	x = (WIDTH - game->ui.img->width) / 2;
 	y = HEIGHT - game->ui.img->height;
 	if (mlx_image_to_window(game->mlx, game->ui.img, x, y) == -1)
 	{
-		fprintf(stderr, "Error: can't animate interface\n");
+		print_error("Error: can't animate interface\n");
 		exit(EXIT_FAILURE);
 	}
 }
@@ -59,7 +59,6 @@ void	ui_update(void *param)
 	}
 	ui_render_frame(game);
 }
-
 
 //20250608
 // Permite comenzar la secuencia de la animación para la ui al moverse

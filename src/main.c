@@ -25,6 +25,7 @@ int	main(int argc, char **argv)
 	mlx_loop_hook(game.mlx, ui_update, &game);
 	mlx_loop_hook(game.mlx, light_update, &game);
 	mlx_loop_hook(game.mlx, draw_minimap, &game);
+	mlx_loop_hook(game.mlx, update_doors, &game);
 	//mlx_cursor_hook(game.mlx, handle_mouse_rotation, &game);
 	mlx_loop(game.mlx);
 	return (EXIT_SUCCESS);

@@ -33,11 +33,14 @@ CUBE3D_FILES = 			src/main.c \
 						src/map_validate_utils.c \
 						src/map_floodfill.c \
 						src/map_players.c \
+						src/map_doors.c \
 						src/rc_setup.c \
 						src/rc_render.c \
 						src/rc_draw.c \
 						src/rc_draw_utils.c \
-						src/minimap_draw.c
+						src/minimap_draw.c \
+						src/doors.c \
+						src/utils.c
 
 GET_NEXT_LINE_FILES = 	src/get_next_line/get_next_line.c\
 						src/get_next_line/get_next_line_utils.c

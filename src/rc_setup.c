@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 12:40:13 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/05 12:04:39 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/06 11:11:18 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,21 @@
 static void	load_door_textures(t_game *game)
 {
 	char	path[64];
-	int		i;
+	int		i = 0;
 
-	for (i = 0; i < 4; i++)
+	while (i < 4)
 	{
-		snprintf(path, sizeof(path), "./textures/door%d.png", i);
+		build_texture_path(path, "./textures/doors/door", i, ".png");
 		game->door[i] = mlx_load_png(path);
 		if (!game->door[i])
 		{
-			fprintf(stderr, "Error: Failed loading door texture %d from %s\n", i, path);
+			print_error("Error: Failed loading door texture\n");
 			exit(EXIT_FAILURE);
 		}
+		i++;
 	}
 }
+
 
 //20250608 
 // cargamos las texturas en mlx
@@ -43,7 +45,7 @@ static void	load_wall_textures(t_game *game)
 	game->tex_ea = mlx_load_png(game->map.texture_ea);
 	if (!game->tex_no || !game->tex_so || !game->tex_we || !game->tex_ea)
 	{
-		fprintf(stderr, "Error: loading textures\n");
+		print_error("Error: loading textures\n");
 		exit(EXIT_FAILURE);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 10:58:42 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/03 20:15:33 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/06 11:09:27 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,33 @@
 
 //20250623 
 // Pinta el frame que toca de luz
+// main -> init_game_window -> rc_setup -> load_ligth_anim -> render_ligth_frame
 void	render_light_frame(t_game *game)
 {
-	int	x = 0;
-	int	y = 0;
+	int	x;
+	int	y;
 
+	x = 0;
+	y = 0;
 	if (game->light.img)
 		mlx_delete_image(game->mlx, game->light.img);
-
 	game->light.img = mlx_texture_to_image(game->mlx,
 		game->light.frames[game->light.current_frame]);
 	if (!game->light.img)
 	{
-		fprintf(stderr, "Error: creating light frame image\n");
+		print_error("Error: creating light frame image\n");
 		exit(EXIT_FAILURE);
 	}
 	if (mlx_image_to_window(game->mlx, game->light.img, x, y) == -1)
 	{
-		fprintf(stderr, "Error: displaying light frame\n");
+		print_error("Error: displaying light frame\n");
 		exit(EXIT_FAILURE);
 	}
 }
 
 //20250623 
 // Carga tantas texturas como define LIGHT_FRAME_COUNT
+// main -> init_game_window -> rc_setup -> load_ligth_anim -> load_ligth_textures
 static void	load_light_textures(t_game *game)
 {
 	char	path[128];
@@ -45,16 +48,17 @@ static void	load_light_textures(t_game *game)
 
 	while (i < LIGHT_FRAME_COUNT)
 	{
-		snprintf(path, sizeof(path), "textures/interface2/light%d.png", i + 1);
+		build_texture_path(path, "textures/interface2/light", i + 1, ".png");
 		game->light.frames[i] = mlx_load_png(path);
 		if (!game->light.frames[i])
 		{
-			fprintf(stderr, "Error: loading light frame %d\n", i + 1);
+			print_error("Error: loading light frame\n");
 			exit(EXIT_FAILURE);
 		}
 		i++;
 	}
 }
+
 
 //20250623 
 // Actualiza el frame correspondiente que toca pintar a continuación

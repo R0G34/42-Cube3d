@@ -45,7 +45,7 @@ static int	is_valid_map_line(const char *line)
 		}
 		if (!(c == '0' || c == '1' || c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == 'D' || c == ' '))
 		{
-			fprintf(stderr, "Invalid char: '%c' (ascii %d) at pos %d\n", c, c, i);
+			print_error("Error: Invalid char");
 			return (0);
 		}
 		i++;
@@ -67,14 +67,14 @@ int	prevalidate_map_file(const char *filepath)
 		return (perror("open"), 1);
 	while ((line = get_next_line(fd)))
 	{
-		if (is_header_line(line)) // Saltamos líneas del encabezado
+		if (is_header_line(line))
 		{
 			free(line);
 			continue;
 		}
 		if (!is_valid_map_line(line))
 		{
-			fprintf(stderr, "Error: Invalid character in map.\n");
+			print_error("Error: Invalid character in map.\n");
 			free(line);
 			close(fd);
 			return (1);
@@ -114,7 +114,7 @@ int	validate_player_start(char **map, int *x, int *y)
 		i++;
 	}
 	if (found != 1)
-		return (fprintf(stderr, "Error: player not correct\n"), 1);
+		return (print_error("Error: player not correct\n"), 1);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 12:55:58 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/05 12:14:10 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/06 09:57:39 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,42 @@ static int	compute_texture_x(t_game *game, t_ray *ray, mlx_texture_t *tex)
 	return (tex_x);
 }
 
-//20250608
+//20250706
+// Si es una puerta selecciona la textura de puerta correspondiente
+// main -> render -> rc_render_frame -> cast_ray -> draw_column -> select_texture
+static mlx_texture_t	*get_door_texture(t_game *game, int map_x, int map_y)
+{
+	int		j;
+
+	j = 0;
+	while (j < game->num_doors)
+	{
+		if (game->doors[j].x == map_x && game->doors[j].y == map_y)
+		{
+			if (game->doors[j].frame == 3)
+				return (NULL);
+			return game->door[game->doors[j].frame];
+		}
+		j++;
+	}
+	return (NULL);
+}
+
+//20250706
+// Selecciona la textura que va a pintar en la pared o puerta
 // main -> render -> rc_render_frame -> cast_ray -> draw_column -> select_texture
 static mlx_texture_t	*select_texture(t_game *game, t_ray *ray)
 {
-	char		tile;
+	char			tile;
+	mlx_texture_t	*door_tex;
 
 	tile = game->map.complete_map[ray->map_y][ray->map_x];
 	if (tile == 'D')
-		return (game->door[0]);
+	{
+		door_tex = get_door_texture(game, ray->map_x, ray->map_y);
+		if (door_tex)
+			return (door_tex);
+	}
 	if (ray->side == 0)
 	{
 		if (ray->ray_dir_x < 0)

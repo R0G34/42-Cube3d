@@ -46,6 +46,7 @@ int		map_validate(t_map *map);
 int		validate_walls(char **map, int start_x, int start_y);
 int		validate_colors_and_textures(t_map *map);
 int		prevalidate_map_file(const char *filepath);
+void	detect_doors(t_game *game);
 
 // Raycasting
 void	rc_setup(t_game *game);
@@ -55,6 +56,7 @@ void	draw_column(t_game *game, int x, t_ray *ray);
 void	render(void *param);
 void	render_textured_column(t_game *game, t_ray *ray, mlx_texture_t *tex, int x, int tex_x);
 void	draw_minimap(void *param);
+void	update_doors(void *param);
 
 // Input
 void	handle_key(mlx_key_data_t keydata, void *param);
@@ -85,5 +87,11 @@ void	print_map_copy(char **map);
 // Hotkeys
 void	wall_collision(t_game *game);
 bool	is_inside_map(t_map *map, double x, double y);
+
+// Utils
+int		ft_abs(int n);
+double	ft_fabs(double n);
+void	print_error(const char *format);
+void	build_texture_path(char *dest, const char *base, int index, const char *ext);
 
 #endif

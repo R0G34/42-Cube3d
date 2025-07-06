@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 18:05:30 by ajodar            #+#    #+#             */
-/*   Updated: 2025/06/09 12:52:37 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/06 10:58:05 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ static void	create_ui_image(t_game *game)
 	game->ui.img = mlx_texture_to_image(game->mlx, game->ui.frames[0]);
 	if (!game->ui.img)
 	{
-		fprintf(stderr, "Error: creating interface\n");
+		print_error("Error: creating interface\n");
 		exit(EXIT_FAILURE);
 	}
 	x = (WIDTH - game->ui.img->width) / 2;
 	y = HEIGHT - game->ui.img->height;
 	if (mlx_image_to_window(game->mlx, game->ui.img, x, y) == -1)
 	{
-		fprintf(stderr, "Error: creating interface\n");
+		print_error("Error: creating interface\n");
 		exit(EXIT_FAILURE);
 	}
 }
@@ -62,7 +62,7 @@ static void	load_ui_textures(t_game *game)
 		game->ui.frames[i] = mlx_load_png(paths[i]);
 		if (!game->ui.frames[i])
 		{
-			fprintf(stderr, "Error: loading frame %d\n", i);
+			print_error("Error: loading UI frame\n");
 			exit(EXIT_FAILURE);
 		}
 		i++;

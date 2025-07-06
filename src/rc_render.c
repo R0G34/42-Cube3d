@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 12:39:59 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/05 12:13:11 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/06 10:46:04 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static void	init_ray_direction(t_ray *ray, t_game *game, int x)
 	ray->ray_dir_y = game->player.dir_y + game->player.plane_y * ray->camera_x;
 	ray->map_x = (int)game->player.x;
 	ray->map_y = (int)game->player.y;
-	ray->delta_dist_x = fabs(1 / ray->ray_dir_x);
-	ray->delta_dist_y = fabs(1 / ray->ray_dir_y);
+	ray->delta_dist_x = ft_fabs(1 / ray->ray_dir_x);
+	ray->delta_dist_y = ft_fabs(1 / ray->ray_dir_y);
 	ray->hit = 0;
 }
 
@@ -53,11 +53,34 @@ static void	init_ray_steps(t_ray *ray, t_game *game)
 }
 
 //20250608
+// Gestiona dda cuando se trata de una puerta
+// main -> render -> cast_ray -> perform_dda -> perform_dda_doors
+static bool	perform_dda_doors(t_ray *ray, t_game *game)
+{
+	int			i;
+	t_door		*door;
+
+	i = 0;
+	while (i < game->num_doors)
+	{
+		door = &game->doors[i];
+		if (door->x == ray->map_x && door->y == ray->map_y)
+		{
+			if (door->frame < 3)
+				return (true);
+			return (false);
+		}
+		i++;
+	}
+	return (false);
+}
+
+//20250608
 // Hace el calculo que detecta la colisión con las paredes
 // main -> render -> cast_ray -> perform_dda
 void	perform_dda(t_ray *ray, t_game *game)
 {
-	char tile;
+	char	tile;
 
 	while (!ray->hit)
 	{
@@ -74,35 +97,30 @@ void	perform_dda(t_ray *ray, t_game *game)
 			ray->side = 1;
 		}
 		tile = game->map.complete_map[ray->map_y][ray->map_x];
-		if (tile == '1' || tile == 'D')
+		if (tile == '1')
+			ray->hit = 1;
+		else if (tile == 'D' && perform_dda_doors(ray, game))
 			ray->hit = 1;
 	}
 }
 
-//20250608
-// main -> render -> cast_ray
-void	cast_ray(t_game *game, int x)
-{
-	t_ray	ray;
-
-	init_ray_direction(&ray, game, x);
-	init_ray_steps(&ray, game);
-	perform_dda(&ray, game);
-	draw_column(game, x, &ray);
-}
-
-//20250608
+//20250706
 // main -> render
 void	render(void *param)
 {
 	t_game	*game = (t_game *)param;
+	t_ray	ray;
 	int		x;
 
 	init_background(game);
 	x = 0;
 	while (x < WIDTH)
 	{
-		cast_ray(game, x);
+		init_ray_direction(&ray, game, x);
+		init_ray_steps(&ray, game);
+		perform_dda(&ray, game);
+		draw_column(game, x, &ray);
 		x++;
 	}
 }
+
