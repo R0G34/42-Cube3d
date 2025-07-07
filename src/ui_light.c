@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 10:58:42 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/07 09:08:36 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/07 10:07:38 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ static void	load_light_textures(t_game *game)
 		i++;
 	}
 }
-
 
 //20250623 
 // Actualiza el frame correspondiente que toca pintar a continuación

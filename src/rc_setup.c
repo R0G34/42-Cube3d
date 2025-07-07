@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 12:40:13 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/07 09:30:02 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/07 10:07:58 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ static void	load_door_textures(t_game *game)
 		i++;
 	}
 }
-
 
 //20250608 
 // cargamos las texturas en mlx

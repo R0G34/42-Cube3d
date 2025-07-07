@@ -53,14 +53,23 @@ static void	free_map(t_map *map)
 	free(map->texture_ea);
 }
 
+static void	delete_texture_array(mlx_texture_t **textures, int count)
+{
+	int i = 0;
+
+	while (i < count)
+	{
+		if (textures[i])
+			mlx_delete_texture(textures[i]);
+		i++;
+	}
+}
+
 //20250528
 // Limpia la memoria antes de cerrar
 // main -> mlx_key_hook -> handle_key -> cleanup_game
 void	cleanup_game(t_game *game)
 {
-	int i;
-
-	i = 0;
 	if (game->img)
 		mlx_delete_image(game->mlx, game->img);
 	mlx_terminate(game->mlx);
@@ -73,24 +82,14 @@ void	cleanup_game(t_game *game)
 		mlx_delete_texture(game->tex_we);
 	if (game->tex_ea) 
 		mlx_delete_texture(game->tex_ea);
-	i = 0;
-	while (i < game->ui.frame_count)
-	{
-		if (game->ui.frames[i])
-			mlx_delete_texture(game->ui.frames[i]);
-		i++;
-	}
+	delete_texture_array(game->ui.frames, game->ui.frame_count);
 	if (game->ui.img)
 		mlx_delete_image(game->mlx, game->ui.img);
-	i = 0;
-	while (i < 20)
-	{
-		if (game->light.frames[i])
-			mlx_delete_texture(game->light.frames[i]);
-		i++;
-	}
+	delete_texture_array(game->light.frames, 20);
 	if (game->light.img)
 		mlx_delete_image(game->mlx, game->light.img);
+	delete_texture_array(game->door, 4);
+	if (game->doors)
+		free(game->doors);
 }
-
 

@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 10:42:24 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/06 11:11:23 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/07 10:07:19 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,11 @@ void	print_error(const char *msg)
 // main -> init_game_window -> rc_setup -> load_door_textures
 void	build_texture_path(char *dest, const char *base, int index, const char *ext)
 {
-	int		i = 0;
-	int		j = 0;
+	int		i;
+	int		j;
 
+	i = 0;
+	j = 0;
 	while (base[i])
 	{
 		dest[i] = base[i];
