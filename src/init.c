@@ -43,7 +43,6 @@ static void	init_mlx(t_game *game)
 	}
 }
 
-
 //20250527
 // Busca los colores asignados y pinta el suelo y el cielo
 // main -> init_game_window -> rc_setup -> init_background

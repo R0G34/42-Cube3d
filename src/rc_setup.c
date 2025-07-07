@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 12:40:13 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/06 11:11:18 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/07 09:30:02 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,5 @@ void	rc_setup(t_game *game)
 	load_light_anim(game);
 	init_background(game);
 	game->solid_walls = true;
+	game->is_running = false;
 }

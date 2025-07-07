@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 10:13:42 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/06 10:08:36 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/07 09:31:14 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_ui_anim {
 }	t_ui_anim;
 
 typedef struct s_light_anim {
-	mlx_texture_t	*frames[LIGHT_FRAME_COUNT];
+	mlx_texture_t	*frames[20];
 	mlx_image_t		*img;
 	int				current_frame;
 	bool			finished;
@@ -97,6 +97,7 @@ typedef struct s_game {
 	t_map			map;
 	t_player		player;
 	bool			solid_walls;
+	bool			is_running;
 	mlx_texture_t	*tex_no;
 	mlx_texture_t	*tex_so;
 	mlx_texture_t	*tex_we;

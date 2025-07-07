@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 10:58:42 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/06 11:09:27 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/07 09:08:36 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	load_light_textures(t_game *game)
 	char	path[128];
 	int		i = 0;
 
-	while (i < LIGHT_FRAME_COUNT)
+	while (i < 20)
 	{
 		build_texture_path(path, "textures/interface2/light", i + 1, ".png");
 		game->light.frames[i] = mlx_load_png(path);
@@ -75,9 +75,9 @@ void	light_update(void *param)
 		return;
 	delay = 0;
 	game->light.current_frame++;
-	if (game->light.current_frame >= LIGHT_FRAME_COUNT)
+	if (game->light.current_frame >= 20)
 	{
-		game->light.current_frame = LIGHT_FRAME_COUNT - 1;
+		game->light.current_frame = 19;
 		game->light.finished = true;
 	}
 	render_light_frame(game);
