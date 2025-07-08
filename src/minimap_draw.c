@@ -6,7 +6,7 @@
 /*   By: ajodar-c <ajodar-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 19:56:42 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/08 11:46:03 by ajodar-c         ###   ########.fr       */
+/*   Updated: 2025/07/08 12:21:23 by ajodar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ static void	draw_minimap_player(t_game *game)
 	int		dx;
 	int		dy;
 
-	px = (int)(game->player.x * MINIMAP_SCALE) + MINIMAP_OFFSET_X;
-	py = (int)(game->player.y * MINIMAP_SCALE) + MINIMAP_OFFSET_Y;
+	px = (int)(game->player.x * MINIMAP_SCALE) + 10;
+	py = (int)(game->player.y * MINIMAP_SCALE) + (HEIGHT + 10);
 	dx = (int)(game->player.dir_x * 5);
 	dy = (int)(game->player.dir_y * 5);
 	draw_minimap_player_dot(game, px, py);
@@ -59,8 +59,8 @@ static void	draw_minimap_tile(t_game *game, int map_x, \
 	int		start_x;
 	int		start_y;
 
-	start_x = map_x * MINIMAP_SCALE + MINIMAP_OFFSET_X;
-	start_y = map_y * MINIMAP_SCALE + MINIMAP_OFFSET_Y;
+	start_x = map_x * MINIMAP_SCALE + 10;
+	start_y = map_y * MINIMAP_SCALE + (HEIGHT + 10);
 	y = 0;
 	while (y < MINIMAP_SCALE)
 	{

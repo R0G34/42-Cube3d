@@ -6,7 +6,7 @@
 /*   By: ajodar-c <ajodar-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 12:58:22 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/08 12:07:54 by ajodar-c         ###   ########.fr       */
+/*   Updated: 2025/07/08 12:24:41 by ajodar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	recenter_mouse(void *param)
 
 //20250705
 // Rota el personaje con la posición del ratón
-// No funciona del todo que no puede recentrar el ratón
 // main -> handle_mouse_rotation
 void	handle_mouse_rotation(double xpos, double ypos, void *param)
 {
@@ -63,4 +62,5 @@ void	handle_mouse_rotation(double xpos, double ypos, void *param)
 	delta_x = xpos - last_x;
 	if (delta_x != 0)
 		rotate_player(game, delta_x * sensitivity);
+	start_ui_anim(game);
 }

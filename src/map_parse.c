@@ -27,10 +27,8 @@ static char	*sanitize_line(const char *src, int width)
 	while (src[i] && i < width)
 	{
 		c = src[i];
-		if (c == '0' || c == '1' || \
-			c == 'N' || c == 'S' || \
-			c == 'E' || c == 'W' || \
-			c == 'D' || c == ' ')
+		if (c == '0' || c == '1' || c == 'N' || c == 'S' || \
+			c == 'E' || c == 'W' || c == 'D' || c == ' ')
 			dst[i] = c;
 		else
 			dst[i] = ' ';
@@ -81,7 +79,7 @@ static int	is_valid_map_line(const char *line)
 //20250604
 // Completa la estructura map con texturas, colores y el array
 // main -> init_game_window -> map_parse -> extract_textures_colors_maps
-//TODO reducir argumentos
+//TODO mas de 4 argumentos
 static int	extract_textures_colors_maps(t_map *map, char **tmp_map, int *width, int *map_lines, int fd)
 {
 	char		*line;

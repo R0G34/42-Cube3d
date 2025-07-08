@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajodar-c <ajodar-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 10:13:42 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/07 09:31:14 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/08 12:21:39 by ajodar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include "define.h"
 # include "MLX42/MLX42.h"
 
-typedef struct s_map {
+typedef struct s_map
+{
 	char		*texture_no;
 	char		*texture_so;
 	char		*texture_we;
@@ -28,7 +29,8 @@ typedef struct s_map {
 	int			height;
 }	t_map;
 
-typedef struct s_player {
+typedef struct s_player
+{
 	double	x;
 	double	y;
 	double	dir_x;
@@ -37,7 +39,8 @@ typedef struct s_player {
 	double	plane_y;
 }	t_player;
 
-typedef struct s_ui_anim {
+typedef struct s_ui_anim
+{
 	mlx_texture_t	*frames[4];
 	mlx_image_t		*img;
 	int				frame_count;
@@ -45,14 +48,16 @@ typedef struct s_ui_anim {
 	bool			is_animating;
 }	t_ui_anim;
 
-typedef struct s_light_anim {
+typedef struct s_light_anim
+{
 	mlx_texture_t	*frames[20];
 	mlx_image_t		*img;
 	int				current_frame;
 	bool			finished;
 }	t_light_anim;
 
-typedef struct s_ray {
+typedef struct s_ray
+{
 	double	camera_x;
 	double	ray_dir_x;
 	double	ray_dir_y;
@@ -85,13 +90,15 @@ typedef struct s_tex_render_data
 	int			tex_x;
 }	t_tex_render_data;
 
-typedef struct s_door {
+typedef struct s_door
+{
 	int		x;
 	int		y;
 	int		frame;
 }	t_door;
 
-typedef struct s_game {
+typedef struct s_game
+{
 	mlx_t			*mlx;
 	mlx_image_t		*img;
 	t_map			map;
