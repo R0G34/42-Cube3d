@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajodar-c <ajodar-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 13:00:11 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/07 09:58:05 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/08 11:04:09 by ajodar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define DOORS_DELAY 5
 
 // Minimap
-# define MINIMAP_SCALE 10
+# define MINIMAP_SCALE 20
 # define MINIMAP_OFFSET_X 10
 # define MINIMAP_OFFSET_Y (HEIGHT + 10)
 

@@ -41,6 +41,7 @@ static void	init_mlx(t_game *game)
 		print_error("Error: mlx_image_to_window failed\n");
 		exit(EXIT_FAILURE);
 	}
+	mlx_set_cursor_mode(game->mlx, MLX_MOUSE_HIDDEN);
 }
 
 //20250527

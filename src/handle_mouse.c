@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_mouse.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajodar-c <ajodar-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 12:58:22 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/05 11:50:15 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/08 11:05:31 by ajodar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	rotate_player(t_game *game, double rot_speed)
 // main -> handle_mouse_rotation -> recenter_mouse
 void recenter_mouse(t_game *game)
 {
-	mlx_set_mouse_pos(game->mlx, 300, 400);
+	mlx_set_mouse_pos(game->mlx, WIDTH/2, HEIGHT/2);
 }
 
 //20250705
