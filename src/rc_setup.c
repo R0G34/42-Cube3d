@@ -6,7 +6,7 @@
 /*   By: ajodar-c <ajodar-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 12:40:13 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/08 11:14:25 by ajodar-c         ###   ########.fr       */
+/*   Updated: 2025/07/08 11:47:51 by ajodar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@
 static void	load_door_textures(t_game *game)
 {
 	char	path[64];
-	int		i = 0;
+	int		i;
 
+	i = 0;
 	while (i < 4)
 	{
 		build_texture_path(path, "./textures/doors/door", i, ".png");

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_animation.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajodar-c <ajodar-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 17:17:55 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/06 11:00:35 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/08 11:48:49 by ajodar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	ui_render_frame(t_game *game)
 	int		y;
 
 	mlx_delete_image(game->mlx, game->ui.img);
-	game->ui.img = mlx_texture_to_image(game->mlx,
+	game->ui.img = mlx_texture_to_image(game->mlx, \
 		game->ui.frames[game->ui.current_frame]);
 	if (!game->ui.img)
 	{
@@ -42,14 +42,15 @@ static void	ui_render_frame(t_game *game)
 // main -> mlx_loop_hook -> ui_update
 void	ui_update(void *param)
 {
-	t_game *game = (t_game *)param;
+	t_game		*game;
 	static int	delay = 0;
 
+	game = (t_game *)param;
 	if (!game->ui.is_animating)
-		return;
+		return ;
 	delay++;
 	if (delay < UI_ANIM_DELAY)
-		return;
+		return ;
 	delay = 0;
 	game->ui.current_frame++;
 	if (game->ui.current_frame >= game->ui.frame_count)

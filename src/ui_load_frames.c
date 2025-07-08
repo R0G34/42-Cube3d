@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_load_frames.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajodar-c <ajodar-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 18:05:30 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/06 10:58:05 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/08 11:50:35 by ajodar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static void	init_ui_anim_state(t_game *game)
 // main -> init_game_window -> rc_setup -> load_ui_frames -> create_ui_image
 static void	create_ui_image(t_game *game)
 {
-	int x;
-	int y;
+	int		x;
+	int		y;
 
 	game->ui.img = mlx_texture_to_image(game->mlx, game->ui.frames[0]);
 	if (!game->ui.img)
@@ -50,7 +50,7 @@ static void	create_ui_image(t_game *game)
 static void	load_ui_textures(t_game *game)
 {
 	int		i;
-	char *paths[4];
+	char	*paths[4];
 
 	paths[0] = "./textures/interface/frame0.png";
 	paths[1] = "./textures/interface/frame1.png";

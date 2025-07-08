@@ -26,18 +26,8 @@ int	main(int argc, char **argv)
 	mlx_loop_hook(game.mlx, light_update, &game);
 	mlx_loop_hook(game.mlx, draw_minimap, &game);
 	mlx_loop_hook(game.mlx, update_doors, &game);
+	mlx_loop_hook(game.mlx, recenter_mouse, &game);
 	mlx_cursor_hook(game.mlx, handle_mouse_rotation, &game);
 	mlx_loop(game.mlx);
 	return (EXIT_SUCCESS);
 }
-
-/*
-//20250528
-// main de prueba para ver leaks generados por la librería de Codam
-int main(void)
-{
-	mlx_t *mlx = mlx_init(400, 400, "test", true);
-	mlx_terminate(mlx);
-	return 0;
-}
-*/

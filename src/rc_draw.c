@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rc_draw.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajodar-c <ajodar-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 12:55:58 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/06 09:57:39 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/08 11:46:58 by ajodar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static mlx_texture_t	*get_door_texture(t_game *game, int map_x, int map_y)
 		{
 			if (game->doors[j].frame == 3)
 				return (NULL);
-			return game->door[game->doors[j].frame];
+			return (game->door[game->doors[j].frame]);
 		}
 		j++;
 	}
@@ -89,9 +89,11 @@ static mlx_texture_t	*select_texture(t_game *game, t_ray *ray)
 static void	compute_projection(t_game *game, t_ray *ray)
 {
 	if (ray->side == 0)
-		ray->perp_wall_dist = (ray->map_x - game->player.x + (1 - ray->step_x) / 2.0) / ray->ray_dir_x;
+		ray->perp_wall_dist = (ray->map_x - game->player.x + \
+			(1 - ray->step_x) / 2.0) / ray->ray_dir_x;
 	else
-		ray->perp_wall_dist = (ray->map_y - game->player.y + (1 - ray->step_y) / 2.0) / ray->ray_dir_y;
+		ray->perp_wall_dist = (ray->map_y - game->player.y + \
+			(1 - ray->step_y) / 2.0) / ray->ray_dir_y;
 	ray->line_height = (int)(HEIGHT / ray->perp_wall_dist);
 	ray->draw_start = -ray->line_height / 2 + HEIGHT / 2;
 	ray->draw_end = ray->line_height / 2 + HEIGHT / 2;

@@ -17,7 +17,7 @@
 // Ahora mismo no se usa en ningun lado
 void	print_map_copy(char **map)
 {
-	int y;
+	int		y;
 
 	y = 0;
 	while (map && map[y])
@@ -32,7 +32,7 @@ void	print_map_copy(char **map)
 // main -> init_game_window -> print_map
 void	print_map(t_map *map)
 {
-	int y;
+	int		y;
 
 	y = 0;
 	printf("\nMapa (%d x %d):\n", map->width, map->height);
@@ -50,4 +50,3 @@ void	print_map(t_map *map)
 	printf("Floor:  0x%08X\n", map->color_floor);
 	printf("Ceiling: 0x%08X\n\n", map->color_up);
 }
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_doors.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajodar-c <ajodar-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 08:17:05 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/06 11:04:16 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/08 11:40:55 by ajodar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@ static int	count_doors(char **map)
 {
 	int		count;
 	int		y;
+	int		x;
 
 	count = 0;
 	y = 0;
 	while (map[y])
 	{
-		int x = 0;
+		x = 0;
 		while (map[y][x])
 		{
 			if (map[y][x] == 'D')
@@ -90,5 +91,3 @@ void	detect_doors(t_game *game)
 	allocate_doors(game, count);
 	fill_doors(game);
 }
-
-

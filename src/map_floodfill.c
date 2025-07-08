@@ -48,8 +48,8 @@ static char	**duplicate_map(char **map)
 // main -> init_game_window -> map_validate -> validate_walls -> flood_check -> is_invalid_tile
 static int	is_invalid_tile(char c)
 {
-	return (c != '0' && c != 'N' && c != 'S' &&
-			c != 'E' && c != 'W' && c != 'D');
+	return (c != '0' && c != 'N' && c != 'S' && \
+		c != 'E' && c != 'W' && c != 'D');
 }
 
 //20250603
@@ -60,22 +60,22 @@ static void	flood_check(char **map, int x, int y, int *count, int *valid)
 	if (y < 0 || map[y] == NULL || x < 0 || x >= (int)ft_strlen(map[y]))
 	{
 		*valid = 1;
-		return;
+		return ;
 	}
 	if (*count >= 4000 || *valid != 0)
-		return;
+		return ;
 	(*count)++;
 	if (map[y][x] == ' ' || map[y][x] == '\0')
 	{
 		*valid = 1;
-		return;
+		return ;
 	}
 	if (map[y][x] == '1' || map[y][x] == 'V')
-		return;
+		return ;
 	if (is_invalid_tile(map[y][x]))
 	{
 		*valid = 1;
-		return;
+		return ;
 	}
 	map[y][x] = 'V';
 	flood_check(map, x + 1, y, count, valid);
@@ -83,8 +83,6 @@ static void	flood_check(char **map, int x, int y, int *count, int *valid)
 	flood_check(map, x, y + 1, count, valid);
 	flood_check(map, x, y - 1, count, valid);
 }
-
-
 
 //20250603
 // Valida que los muros cierren lanzando un floodfill desde dentro
@@ -112,4 +110,3 @@ int	validate_walls(char **map, int start_x, int start_y)
 	}
 	return (0);
 }
-

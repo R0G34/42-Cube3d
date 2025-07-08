@@ -17,11 +17,11 @@
 // main -> init_game_window -> map_validate -> validate_walls -> free_map_copy
 void	free_map_copy(char **map_copy)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	if (!map_copy)
-		return;
+		return ;
 	while (map_copy[i])
 	{
 		free(map_copy[i]);
@@ -55,8 +55,9 @@ static void	free_map(t_map *map)
 
 static void	delete_texture_array(mlx_texture_t **textures, int count)
 {
-	int i = 0;
+	int		i;
 
+	i = 0;
 	while (i < count)
 	{
 		if (textures[i])
@@ -73,13 +74,13 @@ void	cleanup_game(t_game *game)
 	if (game->img)
 		mlx_delete_image(game->mlx, game->img);
 	free_map(&game->map);
-	if (game->tex_no) 
+	if (game->tex_no)
 		mlx_delete_texture(game->tex_no);
-	if (game->tex_so) 
+	if (game->tex_so)
 		mlx_delete_texture(game->tex_so);
-	if (game->tex_we) 
+	if (game->tex_we)
 		mlx_delete_texture(game->tex_we);
-	if (game->tex_ea) 
+	if (game->tex_ea)
 		mlx_delete_texture(game->tex_ea);
 	delete_texture_array(game->ui.frames, game->ui.frame_count);
 	if (game->ui.img)
@@ -91,4 +92,3 @@ void	cleanup_game(t_game *game)
 	if (game->doors)
 		free(game->doors);
 }
-

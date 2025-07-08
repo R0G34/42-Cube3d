@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_keys_extra.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajodar-c <ajodar-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 10:40:47 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/05 10:50:09 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/08 12:05:44 by ajodar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,18 @@ static bool	is_valid_cell(t_map *map, int neighbor_y, int neighbor_x)
 {
 	if (neighbor_y < 0 || neighbor_y >= map->height)
 		return (false);
-	if (neighbor_x < 0 || neighbor_x >= (int)ft_strlen(map->complete_map[neighbor_y]))
+	if (neighbor_x < 0 || neighbor_x >= \
+	(int)ft_strlen(map->complete_map[neighbor_y]))
 		return (false);
 	return (map->complete_map[neighbor_y][neighbor_x] != ' ');
 }
 
-
 //20250701
 // Comprueba que la casilla no tenga cerca null o espacios
 // main -> mlx_key_hook -> handle_key -> handle_movement -> update_player_position -> is_inside_map
-static bool	is_surroundings_valid(t_map *map, int mx, int my, double x, double y)
+//TODO mas de 4 argumentos
+static bool	is_surroundings_valid(t_map *map, int mx, int my, \
+double x, double y)
 {
 	int		row_len;
 	int		dy;

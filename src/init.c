@@ -52,11 +52,12 @@ void	init_background(t_game *game)
 {
 	uint32_t	color;
 	int			y;
+	int			x;
 
 	y = 0;
 	while (y < HEIGHT)
 	{
-		int x = 0;
+		x = 0;
 		if (y < HEIGHT / 2)
 			color = game->map.color_up;
 		else
@@ -82,4 +83,3 @@ void	init_game_window(t_game *game, char *map_path)
 	init_mlx(game);
 	rc_setup(game);
 }
-

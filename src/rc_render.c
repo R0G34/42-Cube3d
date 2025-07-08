@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rc_render.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajodar-c <ajodar-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 12:39:59 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/06 10:46:04 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/08 11:47:36 by ajodar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ static void	init_ray_steps(t_ray *ray, t_game *game)
 	else
 	{
 		ray->step_x = 1;
-		ray->side_dist_x = (ray->map_x + 1.0 - game->player.x) * ray->delta_dist_x;
+		ray->side_dist_x = (ray->map_x + 1.0 - game->player.x) \
+			* ray->delta_dist_x;
 	}
 	if (ray->ray_dir_y < 0)
 	{
@@ -48,7 +49,8 @@ static void	init_ray_steps(t_ray *ray, t_game *game)
 	else
 	{
 		ray->step_y = 1;
-		ray->side_dist_y = (ray->map_y + 1.0 - game->player.y) * ray->delta_dist_y;
+		ray->side_dist_y = (ray->map_y + 1.0 - game->player.y) \
+			* ray->delta_dist_y;
 	}
 }
 
@@ -108,10 +110,11 @@ void	perform_dda(t_ray *ray, t_game *game)
 // main -> render
 void	render(void *param)
 {
-	t_game	*game = (t_game *)param;
+	t_game	*game;
 	t_ray	ray;
 	int		x;
 
+	game = (t_game *)param;
 	init_background(game);
 	x = 0;
 	while (x < WIDTH)
@@ -123,4 +126,3 @@ void	render(void *param)
 		x++;
 	}
 }
-

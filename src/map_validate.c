@@ -33,17 +33,20 @@ static int	is_header_line(const char *line)
 // main -> init_game_window -> map_setup -> prevalidate_map_file
 static int	is_valid_map_line(const char *line)
 {
-	int	i = 0;
+	int		i;
+	char	c;
 
+	i = 0;
 	while (line[i] && line[i] != '\n')
 	{
-		char c = line[i];
+		c = line[i];
 		if (c == '\r')
 		{
 			i++;
-			continue;
+			continue ;
 		}
-		if (!(c == '0' || c == '1' || c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == 'D' || c == ' '))
+		if (!(c == '0' || c == '1' || c == 'N' || c == 'S' || \
+			c == 'E' || c == 'W' || c == 'D' || c == ' '))
 		{
 			print_error("Error: Invalid char");
 			return (0);
@@ -52,7 +55,6 @@ static int	is_valid_map_line(const char *line)
 	}
 	return (1);
 }
-
 
 //20250705
 // Valida los caracteres del mapa
@@ -70,7 +72,7 @@ int	prevalidate_map_file(const char *filepath)
 		if (is_header_line(line))
 		{
 			free(line);
-			continue;
+			continue ;
 		}
 		if (!is_valid_map_line(line))
 		{
@@ -84,7 +86,6 @@ int	prevalidate_map_file(const char *filepath)
 	close(fd);
 	return (0);
 }
-
 
 //20250603
 // Confirma la posición inicial del jugador en el mapa para hacer luego flood fill desde ahí
@@ -134,4 +135,3 @@ int	map_validate(t_map *map)
 		exit(EXIT_FAILURE);
 	return (0);
 }
-

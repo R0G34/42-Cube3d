@@ -35,13 +35,13 @@ static int	parse_texture(t_map *map, char *line)
 	while (*line == ' ' || *line == '\t')
 		line++;
 	if (!ft_strncmp(line, "NO ", 3))
-		return clean_texture(&map->texture_no, "NO ", line);
+		return (clean_texture(&map->texture_no, "NO ", line));
 	if (!ft_strncmp(line, "SO ", 3))
-		return clean_texture(&map->texture_so, "SO ", line);
+		return (clean_texture(&map->texture_so, "SO ", line));
 	if (!ft_strncmp(line, "WE ", 3))
-		return clean_texture(&map->texture_we, "WE ", line);
+		return (clean_texture(&map->texture_we, "WE ", line));
 	if (!ft_strncmp(line, "EA ", 3))
-		return clean_texture(&map->texture_ea, "EA ", line);
+		return (clean_texture(&map->texture_ea, "EA ", line));
 	return (0);
 }
 
@@ -51,7 +51,10 @@ static int	parse_texture(t_map *map, char *line)
 uint32_t	parse_rgb(const char *str)
 {
 	char	**split;
-	int		r, g, b, i;
+	int		r;
+	int		g;
+	int		b;
+	int		i;
 
 	split = ft_split(str, ',');
 	if (!split || !split[0] || !split[1] || !split[2])
@@ -63,7 +66,7 @@ uint32_t	parse_rgb(const char *str)
 	while (split[i])
 		free(split[i++]);
 	free(split);
-	return (r << 24) | (g << 16) | (b << 8) | 0xFF;
+	return ((r << 24) | (g << 16) | (b << 8) | 0xFF);
 }
 
 //20250605

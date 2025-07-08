@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_keys_move.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajodar-c <ajodar-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 09:33:05 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/05 10:49:47 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/08 12:07:25 by ajodar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	update_player_position(t_game *game, double next_x, double next_y)
 // main -> mlx_key_hook -> handle_key -> handle_movement
 void	handle_movement(t_game *game, mlx_key_data_t keydata, double move_speed)
 {
-	double next_x;
-	double next_y;
+	double		next_x;
+	double		next_y;
 
 	next_x = game->player.x;
 	next_y = game->player.y;
@@ -60,7 +60,7 @@ void	handle_movement(t_game *game, mlx_key_data_t keydata, double move_speed)
 		next_y -= game->player.dir_y * move_speed;
 	}
 	else
-		return;
+		return ;
 	update_player_position(game, next_x, next_y);
 	start_ui_anim(game);
 }
@@ -68,30 +68,40 @@ void	handle_movement(t_game *game, mlx_key_data_t keydata, double move_speed)
 //20250608
 // El personaje rota con teclas sobre su eje actualizando el punto de vista
 // main -> mlx_key_hook -> handle_key -> handle_movement
+//TODO Reducir líneas
 void	handle_rotation(t_game *game, mlx_key_data_t keydata)
 {
-	double rot_speed = ROT_SPEED;
-	double old_dir_x;
-	double old_plane_x;
+	double		rot_speed;
+	double		old_dir_x;
+	double		old_plane_x;
 
+	rot_speed = ROT_SPEED;
 	if (keydata.key == MLX_KEY_E)
 	{
 		old_dir_x = game->player.dir_x;
-		game->player.dir_x = game->player.dir_x * cos(rot_speed) - game->player.dir_y * sin(rot_speed);
-		game->player.dir_y = old_dir_x * sin(rot_speed) + game->player.dir_y * cos(rot_speed);
+		game->player.dir_x = game->player.dir_x * cos(rot_speed) - \
+		game->player.dir_y * sin(rot_speed);
+		game->player.dir_y = old_dir_x * sin(rot_speed) + \
+		game->player.dir_y * cos(rot_speed);
 		old_plane_x = game->player.plane_x;
-		game->player.plane_x = game->player.plane_x * cos(rot_speed) - game->player.plane_y * sin(rot_speed);
-		game->player.plane_y = old_plane_x * sin(rot_speed) + game->player.plane_y * cos(rot_speed);
+		game->player.plane_x = game->player.plane_x * cos(rot_speed) - \
+		game->player.plane_y * sin(rot_speed);
+		game->player.plane_y = old_plane_x * sin(rot_speed) + \
+		game->player.plane_y * cos(rot_speed);
 	}
 	else if (keydata.key == MLX_KEY_Q)
 	{
 		rot_speed = -ROT_SPEED;
 		old_dir_x = game->player.dir_x;
-		game->player.dir_x = game->player.dir_x * cos(rot_speed) - game->player.dir_y * sin(rot_speed);
-		game->player.dir_y = old_dir_x * sin(rot_speed) + game->player.dir_y * cos(rot_speed);
+		game->player.dir_x = game->player.dir_x * cos(rot_speed) - \
+		game->player.dir_y * sin(rot_speed);
+		game->player.dir_y = old_dir_x * sin(rot_speed) + \
+		game->player.dir_y * cos(rot_speed);
 		old_plane_x = game->player.plane_x;
-		game->player.plane_x = game->player.plane_x * cos(rot_speed) - game->player.plane_y * sin(rot_speed);
-		game->player.plane_y = old_plane_x * sin(rot_speed) + game->player.plane_y * cos(rot_speed);
+		game->player.plane_x = game->player.plane_x * cos(rot_speed) - \
+		game->player.plane_y * sin(rot_speed);
+		game->player.plane_y = old_plane_x * sin(rot_speed) + \
+		game->player.plane_y * cos(rot_speed);
 	}
 	start_ui_anim(game);
 }
@@ -119,7 +129,7 @@ void	handle_lateral(t_game *game, mlx_key_data_t keydata, double move_speed)
 		side_y = -game->player.dir_x;
 	}
 	else
-		return;
+		return ;
 	next_x = game->player.x + side_x * move_speed;
 	next_y = game->player.y + side_y * move_speed;
 	update_player_position(game, next_x, next_y);

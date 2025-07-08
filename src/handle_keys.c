@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_keys.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajodar-c <ajodar-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 14:02:17 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/08 09:17:07 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/08 11:36:25 by ajodar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,13 @@ void	handle_speed_boost(t_game *game)
 // main -> mlx_key_hook -> handle_key
 void	handle_key(mlx_key_data_t keydata, void *param)
 {
-	t_game *game = (t_game *)param;
+	t_game		*game;
 	double		move_speed;
 
+	game = (t_game *)param;
 	handle_escape(keydata, game);
 	if (keydata.action != MLX_PRESS && keydata.action != MLX_REPEAT)
-		return;
+		return ;
 	if (game->is_running)
 		move_speed = RUN_SPEED;
 	else
@@ -62,4 +63,3 @@ void	handle_key(mlx_key_data_t keydata, void *param)
 	if (keydata.key == MLX_KEY_3 && keydata.action == MLX_PRESS)
 		handle_speed_boost(game);
 }
-

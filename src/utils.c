@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajodar-c <ajodar-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 10:42:24 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/07 10:07:19 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/08 11:51:47 by ajodar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	ft_abs(int n)
 double	ft_fabs(double n)
 {
 	if (n < 0)
-		return -n;
-	return n;
+		return (-n);
+	return (n);
 }
 
 //20250706
@@ -52,7 +52,8 @@ void	print_error(const char *msg)
 // Para concatenar numeros a las rutas de las texturas
 // main -> init_game_window -> rc_setup -> load_ligth_anim -> load_ligth_textures
 // main -> init_game_window -> rc_setup -> load_door_textures
-void	build_texture_path(char *dest, const char *base, int index, const char *ext)
+void	build_texture_path(char *dest, const char *base, int index, \
+	const char *ext)
 {
 	int		i;
 	int		j;

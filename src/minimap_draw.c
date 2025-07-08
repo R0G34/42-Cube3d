@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_draw.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajodar-c <ajodar-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 19:56:42 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/05 10:45:19 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/08 11:46:03 by ajodar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ static void	draw_minimap_player(t_game *game)
 
 //20250703
 // main -> draw_minimap -> draw_minimap_tile
-static void	draw_minimap_tile(t_game *game, int map_x, int map_y, uint32_t color)
+static void	draw_minimap_tile(t_game *game, int map_x, \
+	int map_y, uint32_t color)
 {
 	int		x;
 	int		y;
@@ -77,17 +78,19 @@ static void	draw_minimap_tile(t_game *game, int map_x, int map_y, uint32_t color
 // main -> draw_minimap
 void	draw_minimap(void *param)
 {
-	t_game	*game = (t_game *)param;
+	t_game	*game;
 	int		map_y;
 	int		map_x;
+	char	tile;
 
+	game = (t_game *)param;
 	map_y = 0;
 	while (map_y < game->map.height)
 	{
 		map_x = 0;
 		while (map_x < game->map.width)
 		{
-			char tile = game->map.complete_map[map_y][map_x];
+			tile = game->map.complete_map[map_y][map_x];
 			if (tile == '1')
 				draw_minimap_tile(game, map_x, map_y, 0xFFFFFFFF);
 			else
@@ -98,5 +101,3 @@ void	draw_minimap(void *param)
 	}
 	draw_minimap_player(game);
 }
-
-

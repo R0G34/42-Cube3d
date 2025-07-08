@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rc_draw_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajodar-c <ajodar-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 09:16:49 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/05 10:45:42 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/08 12:04:39 by ajodar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 //20250703
 // main -> render -> rc_render_frame -> cast_ray -> draw_column -> render_textured_column -> draw_column_loop
-static void	draw_texture_pixel(t_game *game, mlx_texture_t *tex, t_tex_render_data *data, int y)
+static void	draw_texture_pixel(t_game *game, mlx_texture_t *tex, \
+t_tex_render_data *data, int y)
 {
 	int			tex_y;
 	uint8_t		*pixel;
@@ -24,22 +25,26 @@ static void	draw_texture_pixel(t_game *game, mlx_texture_t *tex, t_tex_render_da
 	if (tex_y >= 0 && tex_y < (int)tex->height)
 	{
 		pixel = &tex->pixels[4 * (tex_y * tex->width + data->tex_x)];
-		color = (pixel[0] << 24) | (pixel[1] << 16) | (pixel[2] << 8) | pixel[3];
+		color = (pixel[0] << 24) | (pixel[1] << 16) | \
+			(pixel[2] << 8) | pixel[3];
 		mlx_put_pixel(game->img, data->x, y, color);
 	}
 }
 
 //20250608
 // main -> render -> rc_render_frame -> cast_ray -> draw_column -> compute_texture_step
-static void	compute_texture_step(t_ray *ray, mlx_texture_t *tex, double *tex_step, double *tex_pos)
+static void	compute_texture_step(t_ray *ray, mlx_texture_t *tex, \
+double *tex_step, double *tex_pos)
 {
 	*tex_step = (double)tex->height / ray->line_height;
-	*tex_pos = (ray->draw_start - HEIGHT / 2 + ray->line_height / 2) * (*tex_step);
+	*tex_pos = (ray->draw_start - HEIGHT / 2 + ray->line_height / 2) \
+		* (*tex_step);
 }
 
 //20250608
 // main -> render -> rc_render_frame -> cast_ray -> draw_column -> render_textured_column -> draw_column_loop
-static void	draw_column_loop(t_game *game, t_ray *ray, mlx_texture_t *tex, t_tex_render_data *data)
+static void	draw_column_loop(t_game *game, t_ray *ray, mlx_texture_t *tex, \
+t_tex_render_data *data)
 {
 	int		y;
 
@@ -54,7 +59,8 @@ static void	draw_column_loop(t_game *game, t_ray *ray, mlx_texture_t *tex, t_tex
 
 //20250703
 // main -> render -> rc_render_frame -> cast_ray -> draw_column -> render_textured_column
-void	render_textured_column(t_game *game, t_ray *ray, mlx_texture_t *tex, int x, int tex_x)
+void	render_textured_column(t_game *game, t_ray *ray, mlx_texture_t *tex, \
+int x, int tex_x)
 {
 	t_tex_render_data	data;
 

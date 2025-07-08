@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_light.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajodar-c <ajodar-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 10:58:42 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/07 10:07:38 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/08 11:50:17 by ajodar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	render_light_frame(t_game *game)
 	y = 0;
 	if (game->light.img)
 		mlx_delete_image(game->mlx, game->light.img);
-	game->light.img = mlx_texture_to_image(game->mlx,
+	game->light.img = mlx_texture_to_image(game->mlx, \
 		game->light.frames[game->light.current_frame]);
 	if (!game->light.img)
 	{
@@ -44,8 +44,9 @@ void	render_light_frame(t_game *game)
 static void	load_light_textures(t_game *game)
 {
 	char	path[128];
-	int		i = 0;
+	int		i;
 
+	i = 0;
 	while (i < 20)
 	{
 		build_texture_path(path, "textures/interface2/light", i + 1, ".png");
@@ -64,14 +65,15 @@ static void	load_light_textures(t_game *game)
 // Main -> mlx_loop_hook -> light_update
 void	light_update(void *param)
 {
-	t_game *game = (t_game *)param;
+	t_game		*game;
 	static int	delay = 0;
 
+	game = (t_game *)param;
 	if (game->light.finished)
-		return;
+		return ;
 	delay++;
 	if (delay < LIGHT_ANIM_DELAY)
-		return;
+		return ;
 	delay = 0;
 	game->light.current_frame++;
 	if (game->light.current_frame >= 20)
