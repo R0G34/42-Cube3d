@@ -6,7 +6,7 @@
 /*   By: ajodar-c <ajodar-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 10:42:24 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/08 11:51:47 by ajodar-c         ###   ########.fr       */
+/*   Updated: 2025/07/08 12:34:30 by ajodar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ double	ft_fabs(double n)
 // main -> init_game_window -> rc_setup -> load_wall_textures
 // main -> init_game_window -> rc_setup -> load_door_textures
 // main -> init_game_window -> map_setup -> prevalidate_map_file
-// main -> init_game_window -> map_validate -> validate_walls
+// main -> init_game_window -> map_validate -> validate_wallsclear
 // main -> init_game_window -> detect_doors -> allocate_doors
 // main -> init_game_window -> init_mlx
 // main -> mlx_loop_hook -> ui_update -> ui_render_frame

@@ -6,7 +6,7 @@
 /*   By: ajodar-c <ajodar-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 09:33:05 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/08 12:07:25 by ajodar-c         ###   ########.fr       */
+/*   Updated: 2025/07/08 14:37:23 by ajodar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ void	handle_movement(t_game *game, mlx_key_data_t keydata, double move_speed)
 
 	next_x = game->player.x;
 	next_y = game->player.y;
-	if (keydata.key == MLX_KEY_W)
+	if (keydata.key == MLX_KEY_W || keydata.key == MLX_KEY_UP)
 	{
 		next_x += game->player.dir_x * move_speed;
 		next_y += game->player.dir_y * move_speed;
 	}
-	else if (keydata.key == MLX_KEY_S)
+	else if (keydata.key == MLX_KEY_S || keydata.key == MLX_KEY_DOWN)
 	{
 		next_x -= game->player.dir_x * move_speed;
 		next_y -= game->player.dir_y * move_speed;
@@ -65,46 +65,41 @@ void	handle_movement(t_game *game, mlx_key_data_t keydata, double move_speed)
 	start_ui_anim(game);
 }
 
-//20250608
-// El personaje rota con teclas sobre su eje actualizando el punto de vista
-// main -> mlx_key_hook -> handle_key -> handle_movement
-//TODO Reducir líneas
-void	handle_rotation(t_game *game, mlx_key_data_t keydata)
+//20250708
+// Gestiona el giro del personaje actualizando su situación
+// main -> mlx_key_hook -> handle_key -> handle_movement -> rotate_player
+static void	rotate_player(t_game *game, double rot_speed)
 {
-	double		rot_speed;
 	double		old_dir_x;
 	double		old_plane_x;
 
+	old_dir_x = game->player.dir_x;
+	old_plane_x = game->player.plane_x;
+	game->player.dir_x = game->player.dir_x * cos(rot_speed) - \
+		game->player.dir_y * sin(rot_speed);
+	game->player.dir_y = old_dir_x * sin(rot_speed) + \
+		game->player.dir_y * cos(rot_speed);
+	game->player.plane_x = game->player.plane_x * cos(rot_speed) - \
+		game->player.plane_y * sin(rot_speed);
+	game->player.plane_y = old_plane_x * sin(rot_speed) + \
+		game->player.plane_y * cos(rot_speed);
+}
+
+//20250708
+// El personaje rota con teclas sobre su eje actualizando el punto de vista
+// main -> mlx_key_hook -> handle_key -> handle_movement
+void	handle_rotation(t_game *game, mlx_key_data_t keydata)
+{
+	double		rot_speed;
+
 	rot_speed = ROT_SPEED;
-	if (keydata.key == MLX_KEY_E)
-	{
-		old_dir_x = game->player.dir_x;
-		game->player.dir_x = game->player.dir_x * cos(rot_speed) - \
-		game->player.dir_y * sin(rot_speed);
-		game->player.dir_y = old_dir_x * sin(rot_speed) + \
-		game->player.dir_y * cos(rot_speed);
-		old_plane_x = game->player.plane_x;
-		game->player.plane_x = game->player.plane_x * cos(rot_speed) - \
-		game->player.plane_y * sin(rot_speed);
-		game->player.plane_y = old_plane_x * sin(rot_speed) + \
-		game->player.plane_y * cos(rot_speed);
-	}
-	else if (keydata.key == MLX_KEY_Q)
-	{
-		rot_speed = -ROT_SPEED;
-		old_dir_x = game->player.dir_x;
-		game->player.dir_x = game->player.dir_x * cos(rot_speed) - \
-		game->player.dir_y * sin(rot_speed);
-		game->player.dir_y = old_dir_x * sin(rot_speed) + \
-		game->player.dir_y * cos(rot_speed);
-		old_plane_x = game->player.plane_x;
-		game->player.plane_x = game->player.plane_x * cos(rot_speed) - \
-		game->player.plane_y * sin(rot_speed);
-		game->player.plane_y = old_plane_x * sin(rot_speed) + \
-		game->player.plane_y * cos(rot_speed);
-	}
+	if (keydata.key == MLX_KEY_E || keydata.key == MLX_KEY_RIGHT)
+		rotate_player(game, rot_speed);
+	else if (keydata.key == MLX_KEY_Q || keydata.key == MLX_KEY_LEFT)
+		rotate_player(game, -rot_speed);
 	start_ui_anim(game);
 }
+
 
 //20250703
 // El personaje se mueve de manera lateral

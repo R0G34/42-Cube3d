@@ -69,8 +69,7 @@ static int	is_valid_map_line(const char *line)
 		line++;
 	if (*line == '\0' || *line == '\n')
 		return (0);
-	if (*line == '1' || *line == '0' || \
-		*line == 'N' || *line == 'S' || \
+	if (*line == '1' || *line == '0' || *line == 'N' || *line == 'S' || \
 		*line == 'E' || *line == 'W')
 		return (1);
 	return (0);
