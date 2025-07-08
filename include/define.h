@@ -6,16 +6,12 @@
 /*   By: ajodar-c <ajodar-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 13:00:11 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/08 12:28:37 by ajodar-c         ###   ########.fr       */
+/*   Updated: 2025/07/08 12:31:08 by ajodar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINE_H
 # define DEFINE_H
-
-// Basic
-# define WIDTH 800
-# define HEIGHT 600
 
 // Movement & Rotation
 # define MOVE_SPEED 0.05

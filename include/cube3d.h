@@ -27,6 +27,10 @@
 # include <unistd.h>
 # include <string.h>
 
+// Basic
+# define WIDTH 800
+# define HEIGHT 600
+
 // Init
 void		init_game_window(t_game *game, char *map_path);
 void		init_map(t_map *map);
