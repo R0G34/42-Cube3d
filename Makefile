@@ -111,8 +111,7 @@ valgrind+: re
 
 sani: re
 	$(CC) $(CFILES) $(CFLAGS) $(CFLAGSSAN) $(MLX42_LIB) $(MLX42_FLAGS) -o $(NAME)
-	@./$(NAME) $(filter-out $@,$(MAKECMDGOALS))
-
+	@./$(NAME) $(filter-out $@,$(MAKECMDGOALS)) 2>&1 | tee sanitize_out.txt
 
 # install tools
 winstall:

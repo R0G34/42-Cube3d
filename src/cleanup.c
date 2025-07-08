@@ -72,7 +72,6 @@ void	cleanup_game(t_game *game)
 {
 	if (game->img)
 		mlx_delete_image(game->mlx, game->img);
-	mlx_terminate(game->mlx);
 	free_map(&game->map);
 	if (game->tex_no) 
 		mlx_delete_texture(game->tex_no);

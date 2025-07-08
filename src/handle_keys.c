@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 14:02:17 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/07 09:53:12 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/08 09:17:07 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	handle_escape(mlx_key_data_t keydata, t_game *game)
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
 		cleanup_game(game);
+		mlx_terminate(game->mlx);
 		exit(EXIT_SUCCESS);
 	}
 }
