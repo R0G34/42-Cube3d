@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajodar-c <ajodar-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 13:00:11 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/08 12:31:08 by ajodar-c         ###   ########.fr       */
+/*   Updated: 2025/07/09 10:15:26 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define UI_ANIM_DELAY 5
 
 // light animation
-# define LIGHT_ANIM_DELAY 100
+# define LIGHT_ANIM_DELAY 200
 
 // Doors animation
 # define DOORS_DELAY 4

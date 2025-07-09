@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_keys_extra.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajodar-c <ajodar-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 10:40:47 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/08 12:05:44 by ajodar-c         ###   ########.fr       */
+/*   Updated: 2025/07/09 10:02:49 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,33 +45,32 @@ static bool	is_valid_cell(t_map *map, int neighbor_y, int neighbor_x)
 //20250701
 // Comprueba que la casilla no tenga cerca null o espacios
 // main -> mlx_key_hook -> handle_key -> handle_movement -> update_player_position -> is_inside_map
-//TODO mas de 4 argumentos
-static bool	is_surroundings_valid(t_map *map, int mx, int my, \
-double x, double y)
+static bool	is_surroundings_valid(t_map *map, double x, double y)
 {
-	int		row_len;
-	int		dy;
+	int		mx;
+	int		my;
 	int		dx;
+	int		dy;
+	int		row_len;
 
+	mx = (int)x;
+	my = (int)y;
 	if (x < 1.1 || y < 1.1 || y > map->height - 1.1)
 		return (false);
 	row_len = (int)ft_strlen(map->complete_map[my]);
 	if (x > row_len - 1.1)
 		return (false);
 	dy = -1;
-	while (dy <= 1)
+	while (++dy <= 1)
 	{
 		dx = -1;
-		while (dx <= 1)
-		{
+		while (++dx <= 1)
 			if (!is_valid_cell(map, my + dy, mx + dx))
 				return (false);
-			dx++;
-		}
-		dy++;
 	}
 	return (true);
 }
+
 
 //20250701
 // Comprueba si la casilla actual es un suelo válido
@@ -102,5 +101,5 @@ bool	is_inside_map(t_map *map, double x, double y)
 	map_y = (int)y;
 	if (is_core_tile_open(map, map_x, map_y))
 		return (true);
-	return (is_surroundings_valid(map, map_x, map_y, x, y));
+	return (is_surroundings_valid(map, x, y));
 }

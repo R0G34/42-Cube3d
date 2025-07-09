@@ -78,34 +78,30 @@ static int	is_valid_map_line(const char *line)
 //20250604
 // Completa la estructura map con texturas, colores y el array
 // main -> init_game_window -> map_parse -> extract_textures_colors_maps
-//TODO mas de 4 argumentos
-static int	extract_textures_colors_maps(t_map *map, char **tmp_map, int *width, int *map_lines, int fd)
+static char **extract_textures_colors_maps(t_map *map, int *width, int *map_lines, int fd)
 {
-	char		*line;
-	size_t		len;
+	char	*line;
+	char	**tmp_map;
+	size_t	len;
 
-	len = 0;
+	tmp_map = malloc(sizeof(char *) * 1024);
+	if (!tmp_map)
+		return (NULL);
 	while ((line = get_next_line(fd)))
 	{
-		if (!parse_texture_colors(map, line))
-		{
-			if (is_valid_map_line(line))
-			{
-				len = ft_strlen(line);
-				if (len > 0 && line[len - 1] == '\n')
-					line[len - 1] = '\0';
-				if ((int)len > *width)
-					*width = len;
-				tmp_map[*map_lines] = line;
-				(*map_lines)++;
-			}
-			else
-				free(line);
-		}
-		else
+		if (parse_texture_colors(map, line) || !is_valid_map_line(line))
 			free(line);
+		else
+		{
+			len = ft_strlen(line);
+			if (len > 0 && line[len - 1] == '\n')
+				line[len - 1] = '\0';
+			if ((int)len > *width)
+				*width = len;
+			tmp_map[(*map_lines)++] = line;
+		}
 	}
-	return (0);
+	return (tmp_map);
 }
 
 //20250604
@@ -113,10 +109,10 @@ static int	extract_textures_colors_maps(t_map *map, char **tmp_map, int *width, 
 // main -> init_game_window -> map_parse
 int	map_parse(t_map *map, char *map_path)
 {
-	int		fd;
-	char	**tmp_map;
-	int		map_lines;
-	int		width;
+	int			fd;
+	char		**tmp_map;
+	int			map_lines;
+	int			width;
 
 	map_lines = 0;
 	width = 0;
@@ -124,10 +120,9 @@ int	map_parse(t_map *map, char *map_path)
 	fd = open(map_path, O_RDONLY);
 	if (fd < 0)
 		return (perror("open"), -1);
-	tmp_map = malloc(sizeof(char *) * 1024);
+	tmp_map = extract_textures_colors_maps(map, &width, &map_lines, fd);
 	if (!tmp_map)
 		return (close(fd), -1);
-	extract_textures_colors_maps(map, tmp_map, &width, &map_lines, fd);
 	pad_map_lines(tmp_map, map_lines, width);
 	tmp_map[map_lines] = NULL;
 	map->complete_map = tmp_map;
@@ -136,3 +131,4 @@ int	map_parse(t_map *map, char *map_path)
 	close(fd);
 	return (0);
 }
+
