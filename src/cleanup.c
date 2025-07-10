@@ -53,6 +53,8 @@ static void	free_map(t_map *map)
 	free(map->texture_ea);
 }
 
+//20250707
+// main -> mlx_key_hook -> handle_key -> cleanup_game -> delete_texture_array
 static void	delete_texture_array(mlx_texture_t **textures, int count)
 {
 	int		i;

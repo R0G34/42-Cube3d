@@ -6,7 +6,7 @@
 /*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 13:00:11 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/09 10:15:26 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/09 11:19:59 by ajodar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@
 # define UI_ANIM_DELAY 5
 
 // light animation
-# define LIGHT_ANIM_DELAY 200
+# define LIGHT_ANIM_DELAY 1000
 
 // Doors animation
 # define DOORS_DELAY 4
 
 // Minimap
-# define MINIMAP_SCALE 10
+# define MINIMAP_SCALE 5
 
 #endif
