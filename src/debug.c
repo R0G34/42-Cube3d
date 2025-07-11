@@ -12,9 +12,6 @@
 
 #include "../include/cube3d.h"
 
-//20250527
-// Printea el mapa guardado sin acceder a la estructura (Indicando sus dimensiones)
-// Ahora mismo no se usa en ningun lado
 void	print_map_copy(char **map)
 {
 	int		y;
@@ -27,9 +24,6 @@ void	print_map_copy(char **map)
 	}
 }
 
-//20250527
-// Printea a los detalles guardados en la estructura de map
-// main -> init_game_window -> print_map
 void	print_map(t_map *map)
 {
 	int		y;

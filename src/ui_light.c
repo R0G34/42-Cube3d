@@ -12,9 +12,6 @@
 
 #include "../include/cube3d.h"
 
-//20250623 
-// Pinta el frame que toca de luz
-// main -> init_game_window -> rc_setup -> load_ligth_anim -> render_ligth_frame
 void	render_light_frame(t_game *game)
 {
 	int	x;
@@ -38,9 +35,6 @@ void	render_light_frame(t_game *game)
 	}
 }
 
-//20250623 
-// Carga tantas texturas como define LIGHT_FRAME_COUNT
-// main -> init_game_window -> rc_setup -> load_ligth_anim -> load_ligth_textures
 static void	load_light_textures(t_game *game)
 {
 	char	path[128];
@@ -60,9 +54,6 @@ static void	load_light_textures(t_game *game)
 	}
 }
 
-//20250623 
-// Actualiza el frame correspondiente que toca pintar a continuación
-// Main -> mlx_loop_hook -> light_update
 void	light_update(void *param)
 {
 	t_game		*game;
@@ -84,17 +75,12 @@ void	light_update(void *param)
 	render_light_frame(game);
 }
 
-//20250623 
-// Inicia la animación la primera vez
 static void	init_light_anim_state(t_game *game)
 {
 	game->light.current_frame = 0;
 	game->light.finished = false;
 }
 
-//20250623 
-// Carga, inicia y pinta el primer frame la primera vez
-// main -> init_game_window -> rc_setup -> load_ligth_anim
 void	load_light_anim(t_game *game)
 {
 	load_light_textures(game);

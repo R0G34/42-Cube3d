@@ -12,9 +12,6 @@
 
 #include "../include/cube3d.h"
 
-//20250604
-// Limpia lo que tenga la estructura de mapa antes de usarla
-// main -> init_game_window -> map_setup -> init_map
 void	init_map(t_map *map)
 {
 	map->texture_no = NULL;
@@ -28,9 +25,6 @@ void	init_map(t_map *map)
 	map->height = 0;
 }
 
-//20250607
-// Valida la ruta del mapa
-// main -> init_game_window -> map_setup -> validate_map_path
 static int	validate_map_path(const char *path)
 {
 	int		len;
@@ -52,9 +46,6 @@ static int	validate_map_path(const char *path)
 	return (0);
 }
 
-//20250706
-// Calcula y devuelve dinámicamente la ruta completa
-// main -> init_game_window -> map_setup -> build_map_path
 static char	*build_map_path(const char *filename)
 {
 	size_t		len;
@@ -69,9 +60,6 @@ static char	*build_map_path(const char *filename)
 	return (path);
 }
 
-//20250706
-// Crea la ruta completa al mapa, valida y parsea todo a la estructura map
-// main -> init_game_window -> map_setup
 int	map_setup(t_map *map, char *map_name)
 {
 	char	*full_path;

@@ -12,9 +12,6 @@
 
 #include "../include/cube3d.h"
 
-//20250608
-// Borra la ui actual y pinta la nueva que toca
-// main -> mlx_loop_hook -> ui_update -> ui_render_frame
 static void	ui_render_frame(t_game *game)
 {
 	int		x;
@@ -37,9 +34,6 @@ static void	ui_render_frame(t_game *game)
 	}
 }
 
-//20250608
-// Actualiza frame a frame la animación con breve delay cuando se activa
-// main -> mlx_loop_hook -> ui_update
 void	ui_update(void *param)
 {
 	t_game		*game;
@@ -61,10 +55,6 @@ void	ui_update(void *param)
 	ui_render_frame(game);
 }
 
-//20250608
-// Permite comenzar la secuencia de la animación para la ui al moverse
-// main -> mlx_key_hook -> handle_key -> handle_movement -> start_ui_anim
-// main -> mlx_key_hook -> handle_key -> handle_rotation -> start_ui_anim
 void	start_ui_anim(t_game *game)
 {
 	if (!game->ui.is_animating)

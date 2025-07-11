@@ -12,9 +12,6 @@
 
 #include "../include/cube3d.h"
 
-//20250706
-// Cuenta el número de puertas para la estructura game
-// main -> init_game_window -> detect_doors -> count_doors
 static int	count_doors(char **map)
 {
 	int		count;
@@ -37,9 +34,6 @@ static int	count_doors(char **map)
 	return (count);
 }
 
-//20250706
-// Reserva memoria para las puertas
-// main -> init_game_window -> detect_doors -> allocate_doors
 static void	allocate_doors(t_game *game, int count)
 {
 	game->doors = malloc(sizeof(t_door) * count);
@@ -51,9 +45,6 @@ static void	allocate_doors(t_game *game, int count)
 	game->num_doors = count;
 }
 
-//20250706
-// Guarda la ubicación y el frame inicial (Que es 0 siempre)
-// main -> init_game_window -> detect_doors -> fill_doors
 static void	fill_doors(t_game *game)
 {
 	int		x;
@@ -80,9 +71,6 @@ static void	fill_doors(t_game *game)
 	}
 }
 
-//20250706
-// Busca las puertas en el mapa y le dedica una estructura a cada una
-// main -> init_game_window -> detect_doors
 void	detect_doors(t_game *game)
 {
 	int		count;

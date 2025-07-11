@@ -12,9 +12,6 @@
 
 #include "../include/cube3d.h"
 
-//20250705
-// Cargamos las texturas de las puertas
-// main -> init_game_window -> rc_setup -> load_door_textures
 static void	load_door_textures(t_game *game)
 {
 	char	path[64];
@@ -34,9 +31,6 @@ static void	load_door_textures(t_game *game)
 	}
 }
 
-//20250608 
-// cargamos las texturas en mlx
-// main -> init_game_window -> rc_setup -> load_wall_textures
 static void	load_wall_textures(t_game *game)
 {
 	game->tex_no = mlx_load_png(game->map.texture_no);
@@ -50,9 +44,6 @@ static void	load_wall_textures(t_game *game)
 	}
 }
 
-//20250608 
-// Inicialización de texturas en mlx, la interfaz y limpia todo para pintar el fondo
-// main -> init_game_window -> rc_setup
 void	rc_setup(t_game *game)
 {
 	load_wall_textures(game);

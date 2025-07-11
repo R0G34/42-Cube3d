@@ -12,8 +12,6 @@
 
 #include "../include/cube3d.h"
 
-//20250703
-// main -> render -> rc_render_frame -> cast_ray -> draw_column -> render_textured_column -> draw_column_loop
 static void	draw_texture_pixel(t_game *game, mlx_texture_t *tex, \
 t_tex_render_data *data, int y)
 {
@@ -31,8 +29,6 @@ t_tex_render_data *data, int y)
 	}
 }
 
-//20250608
-// main -> render -> rc_render_frame -> cast_ray -> draw_column -> compute_texture_step
 static void	compute_texture_step(t_ray *ray, mlx_texture_t *tex, \
 double *tex_step, double *tex_pos)
 {
@@ -41,8 +37,6 @@ double *tex_step, double *tex_pos)
 		* (*tex_step);
 }
 
-//20250608
-// main -> render -> rc_render_frame -> cast_ray -> draw_column -> render_textured_column -> draw_column_loop
 static void	draw_column_loop(t_game *game, t_ray *ray, mlx_texture_t *tex, \
 t_tex_render_data *data)
 {
@@ -57,8 +51,6 @@ t_tex_render_data *data)
 	}
 }
 
-//20250703
-// main -> render -> rc_render_frame -> cast_ray -> draw_column -> render_textured_column
 void	render_textured_column(t_game *game, t_ray *ray, mlx_texture_t *tex,
 								t_column_info col)
 {

@@ -12,8 +12,6 @@
 
 #include "../include/cube3d.h"
 
-//20250608
-// main -> render -> cast_ray -> init_ray_direction
 static void	init_ray_direction(t_ray *ray, t_game *game, int x)
 {
 	ray->camera_x = 2 * x / (double)WIDTH - 1;
@@ -26,8 +24,6 @@ static void	init_ray_direction(t_ray *ray, t_game *game, int x)
 	ray->hit = 0;
 }
 
-//20250608
-// main -> render -> cast_ray -> init_ray_steps
 static void	init_ray_steps(t_ray *ray, t_game *game)
 {
 	if (ray->ray_dir_x < 0)
@@ -54,9 +50,6 @@ static void	init_ray_steps(t_ray *ray, t_game *game)
 	}
 }
 
-//20250608
-// Gestiona dda cuando se trata de una puerta
-// main -> render -> cast_ray -> perform_dda -> perform_dda_doors
 static bool	perform_dda_doors(t_ray *ray, t_game *game)
 {
 	int			i;
@@ -77,9 +70,6 @@ static bool	perform_dda_doors(t_ray *ray, t_game *game)
 	return (false);
 }
 
-//20250608
-// Hace el calculo que detecta la colisión con las paredes
-// main -> render -> cast_ray -> perform_dda
 void	perform_dda(t_ray *ray, t_game *game)
 {
 	char	tile;
@@ -106,8 +96,6 @@ void	perform_dda(t_ray *ray, t_game *game)
 	}
 }
 
-//20250706
-// main -> render
 void	render(void *param)
 {
 	t_game	*game;

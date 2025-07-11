@@ -12,8 +12,6 @@
 
 #include "../include/cube3d.h"
 
-//20250608
-// Inicializa los valores de animación para luego poder arrancar
 static void	init_ui_anim_state(t_game *game)
 {
 	game->ui.frame_count = 4;
@@ -21,9 +19,6 @@ static void	init_ui_anim_state(t_game *game)
 	game->ui.is_animating = false;
 }
 
-//20250608
-// Carga la imagen con la ruta de la textura y lo guarda como parte de ui
-// main -> init_game_window -> rc_setup -> load_ui_frames -> create_ui_image
 static void	create_ui_image(t_game *game)
 {
 	int		x;
@@ -44,9 +39,6 @@ static void	create_ui_image(t_game *game)
 	}
 }
 
-//20250608
-// Carga la ruta de los png de la interfaz
-// main -> init_game_window -> rc_setup -> load_ui_frames -> load_ui_textures
 static void	load_ui_textures(t_game *game)
 {
 	int		i;
@@ -69,9 +61,6 @@ static void	load_ui_textures(t_game *game)
 	}
 }
 
-//20250608
-// Carga las texturas de la interfaz, prepara el inicio y pinta las imágenes en pantalla
-// main -> init_game_window -> rc_setup -> load_ui_frames
 void	load_ui_frames(t_game *game)
 {
 	load_ui_textures(game);

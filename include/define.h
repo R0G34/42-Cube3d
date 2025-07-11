@@ -13,21 +13,16 @@
 #ifndef DEFINE_H
 # define DEFINE_H
 
-// Movement & Rotation
 # define MOVE_SPEED 0.05
 # define ROT_SPEED 0.05
 # define RUN_SPEED 0.15
 
-// UI animation
 # define UI_ANIM_DELAY 5
 
-// light animation
 # define LIGHT_ANIM_DELAY 1000
 
-// Doors animation
 # define DOORS_DELAY 4
 
-// Minimap
 # define MINIMAP_SCALE 5
 
 #endif

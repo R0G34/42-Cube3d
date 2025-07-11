@@ -12,9 +12,6 @@
 
 #include "../include/cube3d.h"
 
-//20250706
-// Actualiza el estado de las puertas cuando el personaje está cerca
-// main -> update_doors -> should_update_doors
 static bool	should_update_doors(void)
 {
 	static int	frame_skip = 0;
@@ -26,9 +23,6 @@ static bool	should_update_doors(void)
 	return (true);
 }
 
-//20250708
-// Actualiza el frame de una puerta
-// main -> update_doors -> update_one_door
 static void	update_one_door(t_game *game, t_door *door)
 {
 	int		dx;
@@ -48,9 +42,6 @@ static void	update_one_door(t_game *game, t_door *door)
 	}
 }
 
-//20250708
-// Actualiza el estado de las puertas cuando el personaje está cerca
-// main -> update_doors
 void	update_doors(void *param)
 {
 	t_game		*game;

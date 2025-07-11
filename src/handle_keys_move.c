@@ -12,9 +12,6 @@
 
 #include "../include/cube3d.h"
 
-//20250701
-// Actualiza la posición del personaje si está en el mapa y no colisina con paredes
-// main -> mlx_key_hook -> handle_key -> handle_movement -> update_player_position
 void	update_player_position(t_game *game, double next_x, double next_y)
 {
 	if (game->solid_walls)
@@ -39,9 +36,6 @@ void	update_player_position(t_game *game, double next_x, double next_y)
 	}
 }
 
-//20250608
-// El personaje actualiza su localización 
-// main -> mlx_key_hook -> handle_key -> handle_movement
 void	handle_movement(t_game *game, mlx_key_data_t keydata, double move_speed)
 {
 	double		next_x;
@@ -65,9 +59,6 @@ void	handle_movement(t_game *game, mlx_key_data_t keydata, double move_speed)
 	start_ui_anim(game);
 }
 
-//20250708
-// Gestiona el giro del personaje actualizando su situación
-// main -> mlx_key_hook -> handle_key -> handle_movement -> rotate_player
 static void	rotate_player(t_game *game, double rot_speed)
 {
 	double		old_dir_x;
@@ -85,9 +76,6 @@ static void	rotate_player(t_game *game, double rot_speed)
 		game->player.plane_y * cos(rot_speed);
 }
 
-//20250708
-// El personaje rota con teclas sobre su eje actualizando el punto de vista
-// main -> mlx_key_hook -> handle_key -> handle_movement
 void	handle_rotation(t_game *game, mlx_key_data_t keydata)
 {
 	double		rot_speed;
@@ -100,10 +88,6 @@ void	handle_rotation(t_game *game, mlx_key_data_t keydata)
 	start_ui_anim(game);
 }
 
-
-//20250703
-// El personaje se mueve de manera lateral
-// main -> mlx_key_hook -> handle_key -> handle_rotation
 void	handle_lateral(t_game *game, mlx_key_data_t keydata, double move_speed)
 {
 	double	side_x;

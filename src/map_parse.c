@@ -12,8 +12,6 @@
 
 #include "../include/cube3d.h"
 
-//20250604
-// main -> init_game_window -> map_parse -> pad_map_lines -> sanitize_line
 static char	*sanitize_line(const char *src, int width)
 {
 	int		i;
@@ -40,9 +38,6 @@ static char	*sanitize_line(const char *src, int width)
 	return (dst);
 }
 
-//20250705
-// Completa con espacios el array del mapa
-// main -> init_game_window -> map_parse -> pad_map_lines
 static void	pad_map_lines(char **map_lines, int total_lines, int width)
 {
 	char	*clean;
@@ -60,9 +55,6 @@ static void	pad_map_lines(char **map_lines, int total_lines, int width)
 	}
 }
 
-//20250604
-// Ignora las líneas que no tengan información útil
-// main -> init_game_window -> map_parse -> extract_textures_colors_maps -> is_line_empty
 static int	is_valid_map_line(const char *line)
 {
 	while (*line == ' ' || *line == '\t')
@@ -75,9 +67,6 @@ static int	is_valid_map_line(const char *line)
 	return (0);
 }
 
-//20250604
-// Completa la estructura map con texturas, colores y el array
-// main -> init_game_window -> map_parse -> extract_textures_colors_maps
 static char **extract_textures_colors_maps(t_map *map, int *width, int *map_lines, int fd)
 {
 	char	*line;
@@ -104,9 +93,6 @@ static char **extract_textures_colors_maps(t_map *map, int *width, int *map_line
 	return (tmp_map);
 }
 
-//20250604
-// Lee el archivo .cub y guarda lo necesario en la estructura map
-// main -> init_game_window -> map_parse
 int	map_parse(t_map *map, char *map_path)
 {
 	int			fd;

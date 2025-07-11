@@ -12,9 +12,6 @@
 
 #include "../include/cube3d.h"
 
-//20250705
-// Gestiona la rotación del personaje para el movimiento del ratón
-// main -> handle_mouse_rotation -> rotate_player
 static void	rotate_player(t_game *game, double rot_speed)
 {
 	double		old_dir_x;
@@ -32,10 +29,6 @@ static void	rotate_player(t_game *game, double rot_speed)
 		+ game->player.plane_y * cos(rot_speed);
 }
 
-//20250705
-// Centra el ratón en el centro de la pantalla
-// No funciona actualmente, falta algo
-// main -> handle_mouse_rotation -> recenter_mouse
 void	recenter_mouse(void *param)
 {
 	t_game		*game;
@@ -44,9 +37,6 @@ void	recenter_mouse(void *param)
 	mlx_set_mouse_pos(game->mlx, WIDTH / 2, HEIGHT / 2);
 }
 
-//20250705
-// Rota el personaje con la posición del ratón
-// main -> handle_mouse_rotation
 void	handle_mouse_rotation(double xpos, double ypos, void *param)
 {
 	t_game			*game;

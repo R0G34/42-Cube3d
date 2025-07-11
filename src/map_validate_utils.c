@@ -12,9 +12,6 @@
 
 #include "../include/cube3d.h"
 
-//20250605
-// Abre la ruta de la textura, si no abre nada devuelve error
-// main -> init_game_window -> map_validate
 static int	validate_texture_path(char *path)
 {
 	mlx_texture_t	*tex;
@@ -29,9 +26,6 @@ static int	validate_texture_path(char *path)
 	return (1);
 }
 
-//20250605
-// Confirma que el color sea correcto en el formato rgb
-// main -> init_game_window -> map_validate
 static int	validate_rgb_format(uint32_t color, const char *label)
 {
 	int		r;
@@ -56,9 +50,6 @@ static int	validate_rgb_format(uint32_t color, const char *label)
 	return (1);
 }
 
-//20250605
-// Valida las rutas a las texturas y si los colores son válidos
-// main -> init_game_window -> map_validate
 int	validate_colors_and_textures(t_map *map)
 {
 	if (!map->texture_no || !map->texture_so || \

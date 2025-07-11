@@ -12,8 +12,6 @@
 
 #include "../include/cube3d.h"
 
-//20250608
-// main -> render -> rc_render_frame -> cast_ray -> draw_column -> compute_texture_x
 static int	compute_texture_x(t_game *game, t_ray *ray, mlx_texture_t *tex)
 {
 	double	wall_x;
@@ -32,9 +30,6 @@ static int	compute_texture_x(t_game *game, t_ray *ray, mlx_texture_t *tex)
 	return (tex_x);
 }
 
-//20250706
-// Si es una puerta selecciona la textura de puerta correspondiente
-// main -> render -> rc_render_frame -> cast_ray -> draw_column -> select_texture
 static mlx_texture_t	*get_door_texture(t_game *game, int map_x, int map_y)
 {
 	int		j;
@@ -53,9 +48,6 @@ static mlx_texture_t	*get_door_texture(t_game *game, int map_x, int map_y)
 	return (NULL);
 }
 
-//20250706
-// Selecciona la textura que va a pintar en la pared o puerta
-// main -> render -> rc_render_frame -> cast_ray -> draw_column -> select_texture
 static mlx_texture_t	*select_texture(t_game *game, t_ray *ray)
 {
 	char			tile;
@@ -84,8 +76,6 @@ static mlx_texture_t	*select_texture(t_game *game, t_ray *ray)
 	}
 }
 
-//20250608
-// main -> render -> rc_render_frame -> cast_ray -> draw_column -> compute_projection
 static void	compute_projection(t_game *game, t_ray *ray)
 {
 	if (ray->side == 0)
@@ -103,8 +93,6 @@ static void	compute_projection(t_game *game, t_ray *ray)
 		ray->draw_end = HEIGHT - 1;
 }
 
-//20250608
-// main -> render -> rc_render_frame -> cast_ray -> draw_column
 void	draw_column(t_game *game, int x, t_ray *ray)
 {
 	mlx_texture_t	*tex;

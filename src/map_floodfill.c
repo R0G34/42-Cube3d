@@ -12,9 +12,6 @@
 
 #include "../include/cube3d.h"
 
-//20250603
-// Duplica el mapa sobre el que vamos a revisar la validación con floodfill
-// main -> init_game_window -> map_validate -> validate_walls -> duplicate_map
 static char	**duplicate_map(char **map)
 {
 	int		i;
@@ -43,18 +40,12 @@ static char	**duplicate_map(char **map)
 	return (copy);
 }
 
-//20250706
-// Pequeña función para dividir flood_check
-// main -> init_game_window -> map_validate -> validate_walls -> flood_check -> is_invalid_tile
 static int	is_invalid_tile(char c)
 {
 	return (c != '0' && c != 'N' && c != 'S' && \
 		c != 'E' && c != 'W' && c != 'D');
 }
 
-//20250603
-// Realiza un floodfill sobre el mapa para ver fugas
-// main -> init_game_window -> map_validate -> validate_walls -> flood_check
 static void	flood_check(char **map, int x, int y, t_flood_state *state)
 {
 	if (y < 0 || map[y] == NULL || x < 0 || x >= (int)ft_strlen(map[y]))
@@ -84,9 +75,6 @@ static void	flood_check(char **map, int x, int y, t_flood_state *state)
 	flood_check(map, x, y - 1, state);
 }
 
-//20250603
-// Valida que los muros cierren lanzando un floodfill desde dentro
-// main -> init_game_window -> map_validate -> validate_walls
 int	validate_walls(char **map, int start_x, int start_y)
 {
 	char			**map_copy;

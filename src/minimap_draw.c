@@ -12,8 +12,6 @@
 
 #include "../include/cube3d.h"
 
-//20250703
-// main -> draw_minimap -> draw_minimap_player -> draw_minimap_player_dot
 static void	draw_minimap_player_dot(t_game *game, int px, int py)
 {
 	int		x;
@@ -32,8 +30,6 @@ static void	draw_minimap_player_dot(t_game *game, int px, int py)
 	}
 }
 
-//20250703
-// main -> draw_minimap -> draw_minimap_player
 static void	draw_minimap_player(t_game *game)
 {
 	int		px;
@@ -49,8 +45,6 @@ static void	draw_minimap_player(t_game *game)
 	mlx_put_pixel(game->img, px + dx, py + dy, 0xFFFFFFFF);
 }
 
-//20250703
-// main -> draw_minimap -> draw_minimap_tile
 static void	draw_minimap_tile(t_game *game, int map_x, \
 	int map_y, uint32_t color)
 {
@@ -74,8 +68,6 @@ static void	draw_minimap_tile(t_game *game, int map_x, \
 	}
 }
 
-//20250703
-// main -> draw_minimap
 void	draw_minimap(void *param)
 {
 	t_game	*game;

@@ -12,9 +12,6 @@
 
 #include "../include/cube3d.h"
 
-//20250607
-// Limpia la textura de espacios, tabulaciones y salto ants de guardarla
-// main -> init_game_window -> map_parse -> parse_texture_colors -> parse_texture -> clean_texture
 static int	clean_texture(char **texture_field, const char *prefix, char *line)
 {
 	char	*clean;
@@ -28,8 +25,6 @@ static int	clean_texture(char **texture_field, const char *prefix, char *line)
 	return (1);
 }
 
-//20250607
-// main -> init_game_window -> map_parse -> parse_texture_colors -> parse_texture
 static int	parse_texture(t_map *map, char *line)
 {
 	while (*line == ' ' || *line == '\t')
@@ -45,9 +40,6 @@ static int	parse_texture(t_map *map, char *line)
 	return (0);
 }
 
-//20250527
-// Guarda los colores con un formato que pueda leer mlx
-// main -> init_game_window -> map_parse -> parse_texture_colors -> parse_rgb
 uint32_t	parse_rgb(const char *str)
 {
 	char	**split;
@@ -69,8 +61,6 @@ uint32_t	parse_rgb(const char *str)
 	return ((r << 24) | (g << 16) | (b << 8) | 0xFF);
 }
 
-//20250605
-// main -> init_game_window -> map_parse -> parse_texture_colors -> parse_color
 static int	parse_color(t_map *map, char *line)
 {
 	if (!ft_strncmp(line, "F ", 2) && map->color_floor == 0xFFFFFFFF)
@@ -82,9 +72,6 @@ static int	parse_color(t_map *map, char *line)
 	return (1);
 }
 
-//20250527
-// Busca las texturas y colores para guardarls en la estructura
-// main -> init_game_window -> map_parse -> parse_texture_colors
 int	parse_texture_colors(t_map *map, char *line)
 {
 	while (*line == ' ' || *line == '\t')

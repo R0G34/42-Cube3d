@@ -12,7 +12,6 @@
 
 #include "../include/cube3d.h"
 
-//20250707
 int	main(int argc, char **argv)
 {
 	t_game	game;

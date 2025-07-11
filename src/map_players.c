@@ -12,7 +12,6 @@
 
 #include "../include/cube3d.h"
 
-//20250608
 static void	set_player_direction_vertical(t_player *p, char dir)
 {
 	if (dir == 'N')
@@ -31,7 +30,6 @@ static void	set_player_direction_vertical(t_player *p, char dir)
 	}
 }
 
-//20250608
 static void	set_player_direction_horizontal(t_player *p, char dir)
 {
 	if (dir == 'E')
@@ -50,7 +48,6 @@ static void	set_player_direction_horizontal(t_player *p, char dir)
 	}
 }
 
-//20250608
 static void	set_player_direction(t_player *p, char dir)
 {
 	if (dir == 'N' || dir == 'S')
@@ -59,7 +56,6 @@ static void	set_player_direction(t_player *p, char dir)
 		set_player_direction_horizontal(p, dir);
 }
 
-//20250608
 static void	set_player_position(t_game *game, int x, int y, char dir)
 {
 	game->player.x = x + 0.5;
@@ -68,9 +64,6 @@ static void	set_player_position(t_game *game, int x, int y, char dir)
 	game->map.complete_map[y][x] = '0';
 }
 
-//20250608
-// Gestiona los datos de posición y vistas del jugador en el mapa
-// main -> init_game_window -> init_player
 void	init_player(t_game *game)
 {
 	int		y;

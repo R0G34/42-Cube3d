@@ -12,9 +12,6 @@
 
 #include "../include/cube3d.h"
 
-//20250701
-// El personaje actualiza su localización 
-// main -> mlx_key_hook -> handle_key -> handle_movement
 void	wall_collision(t_game *game)
 {
 	if (game->solid_walls == true)
@@ -29,9 +26,6 @@ void	wall_collision(t_game *game)
 	}
 }
 
-//20250701
-// Comprueba que la casilla no tenga cerca null o espacios
-// main -> mlx_key_hook -> handle_key -> handle_movement -> update_player_position -> is_inside_map -> is_surrounding_valid
 static bool	is_valid_cell(t_map *map, int neighbor_y, int neighbor_x)
 {
 	if (neighbor_y < 0 || neighbor_y >= map->height)
@@ -42,9 +36,6 @@ static bool	is_valid_cell(t_map *map, int neighbor_y, int neighbor_x)
 	return (map->complete_map[neighbor_y][neighbor_x] != ' ');
 }
 
-//20250701
-// Comprueba que la casilla no tenga cerca null o espacios
-// main -> mlx_key_hook -> handle_key -> handle_movement -> update_player_position -> is_inside_map
 static bool	is_surroundings_valid(t_map *map, int mx, int my)
 {
 	int		dx;
@@ -69,9 +60,6 @@ static bool	is_surroundings_valid(t_map *map, int mx, int my)
 	return (true);
 }
 
-//20250701
-// Comprueba si la casilla actual es un suelo válido
-// main -> mlx_key_hook -> handle_key -> handle_movement -> update_player_position -> is_inside_map
 static bool	is_core_tile_open(t_map *map, int map_x, int map_y)
 {
 	int		row_len;
@@ -86,9 +74,6 @@ static bool	is_core_tile_open(t_map *map, int map_x, int map_y)
 	return (map->complete_map[map_y][map_x] == '0');
 }
 
-//20250701
-// Comprueba que la casilla a la que se dispone el personaje es válida
-// main -> mlx_key_hook -> handle_key -> handle_movement -> update_player_position -> is_inside_map
 bool	is_inside_map(t_map *map, double x, double y)
 {
 	int		mx;

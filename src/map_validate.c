@@ -12,9 +12,6 @@
 
 #include "../include/cube3d.h"
 
-//20250705
-// Valida los caracteres del mapa
-// main -> init_game_window -> map_setup -> prevalidate_map_file
 static int	is_header_line(const char *line)
 {
 	return (
@@ -28,9 +25,6 @@ static int	is_header_line(const char *line)
 	);
 }
 
-//20250705
-// Valida los caracteres del mapa
-// main -> init_game_window -> map_setup -> prevalidate_map_file
 static int	is_valid_map_line(const char *line)
 {
 	int		i;
@@ -56,9 +50,6 @@ static int	is_valid_map_line(const char *line)
 	return (1);
 }
 
-//20250705
-// Valida los caracteres del mapa
-// main -> init_game_window -> map_setup -> prevalidate_map_file
 int	prevalidate_map_file(const char *filepath)
 {
 	int		fd;
@@ -87,9 +78,6 @@ int	prevalidate_map_file(const char *filepath)
 	return (0);
 }
 
-//20250603
-// Confirma la posición inicial del jugador en el mapa para hacer luego flood fill desde ahí
-// main -> init_game_window -> map_validate -> validate_player_start
 int	validate_player_start(char **map, int *x, int *y)
 {
 	int		i;
@@ -119,9 +107,6 @@ int	validate_player_start(char **map, int *x, int *y)
 	return (0);
 }
 
-//20250603
-// Valida que el mapa sea jugable
-// main -> init_game_window -> map_validate
 int	map_validate(t_map *map)
 {
 	int		start_x;

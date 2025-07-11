@@ -12,9 +12,6 @@
 
 #include "../include/cube3d.h"
 
-//20250608
-// Cierra el juego al presionar scape y libera la memoria
-// main -> mlx_key_hook -> handle_key -> handle_scape
 static void	handle_escape(mlx_key_data_t keydata, t_game *game)
 {
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
@@ -25,9 +22,6 @@ static void	handle_escape(mlx_key_data_t keydata, t_game *game)
 	}
 }
 
-//20250707
-// Cierra el juego al presionar scape y libera la memoria
-// main -> mlx_key_hook -> handle_key -> handle_speed_boost
 void	handle_speed_boost(t_game *game)
 {
 	game->is_running = !game->is_running;
@@ -37,9 +31,6 @@ void	handle_speed_boost(t_game *game)
 		write(1, "Walk activated\n", 15);
 }
 
-//20250608
-// Gestiona la salida del programa con scape, el movimiento, rotación y animación de la interfaz
-// main -> mlx_key_hook -> handle_key
 void	handle_key(mlx_key_data_t keydata, void *param)
 {
 	t_game		*game;

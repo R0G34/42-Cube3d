@@ -12,8 +12,6 @@
 
 #include "../include/cube3d.h"
 
-//20250706
-// main -> update_doors -> ft_abs
 int	ft_abs(int n)
 {
 	if (n < 0)
@@ -21,8 +19,6 @@ int	ft_abs(int n)
 	return (n);
 }
 
-//20250706
-// main -> render -> cast_ray -> init_ray_direction
 double	ft_fabs(double n)
 {
 	if (n < 0)
@@ -30,28 +26,12 @@ double	ft_fabs(double n)
 	return (n);
 }
 
-//20250706
-// main -> init_game_window -> rc_setup -> load_ui_frames -> load_ui_textures
-// main -> init_game_window -> rc_setup -> load_ui_frames -> create_ui_image
-// main -> init_game_window -> rc_setup -> load_ligth_anim -> load_ligth_textures
-// main -> init_game_window -> rc_setup -> load_ligth_anim -> render_ligth_frame
-// main -> init_game_window -> rc_setup -> load_wall_textures
-// main -> init_game_window -> rc_setup -> load_door_textures
-// main -> init_game_window -> map_setup -> prevalidate_map_file
-// main -> init_game_window -> map_validate -> validate_wallsclear
-// main -> init_game_window -> detect_doors -> allocate_doors
-// main -> init_game_window -> init_mlx
-// main -> mlx_loop_hook -> ui_update -> ui_render_frame
 void	print_error(const char *msg)
 {
 	while (*msg)
 		write(2, msg++, 1);
 }
 
-//202850706
-// Para concatenar numeros a las rutas de las texturas
-// main -> init_game_window -> rc_setup -> load_ligth_anim -> load_ligth_textures
-// main -> init_game_window -> rc_setup -> load_door_textures
 void	build_texture_path(char *dest, const char *base, int index, \
 	const char *ext)
 {
