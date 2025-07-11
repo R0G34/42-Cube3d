@@ -16,13 +16,13 @@ void	update_player_position(t_game *game, double next_x, double next_y)
 {
 	if (game->solid_walls)
 	{
-		if (is_inside_map(&game->map, game->player.x, next_y) &&
-			game->map.complete_map[(int)next_y][(int)game->player.x] != '1')
+		if (is_inside_map(&game->map, game->player.x, next_y)
+			&& game->map.complete_map[(int)next_y][(int)game->player.x] != '1')
 		{
 			game->player.y = next_y;
 		}
-		if (is_inside_map(&game->map, next_x, game->player.y) &&
-			game->map.complete_map[(int)game->player.y][(int)next_x] != '1')
+		if (is_inside_map(&game->map, next_x, game->player.y)
+			&& game->map.complete_map[(int)game->player.y][(int)next_x] != '1')
 		{
 			game->player.x = next_x;
 		}
