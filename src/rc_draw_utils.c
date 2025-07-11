@@ -59,13 +59,13 @@ t_tex_render_data *data)
 
 //20250703
 // main -> render -> rc_render_frame -> cast_ray -> draw_column -> render_textured_column
-void	render_textured_column(t_game *game, t_ray *ray, mlx_texture_t *tex, \
-int x, int tex_x)
+void	render_textured_column(t_game *game, t_ray *ray, mlx_texture_t *tex,
+								t_column_info col)
 {
 	t_tex_render_data	data;
 
 	compute_texture_step(ray, tex, &data.tex_step, &data.tex_pos);
-	data.x = x;
-	data.tex_x = tex_x;
+	data.x = col.x;
+	data.tex_x = col.tex_x;
 	draw_column_loop(game, ray, tex, &data);
 }

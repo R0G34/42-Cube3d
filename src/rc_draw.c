@@ -109,6 +109,7 @@ void	draw_column(t_game *game, int x, t_ray *ray)
 {
 	mlx_texture_t	*tex;
 	int				tex_x;
+	t_column_info	col;
 
 	compute_projection(game, ray);
 	tex = select_texture(game, ray);
@@ -117,5 +118,7 @@ void	draw_column(t_game *game, int x, t_ray *ray)
 	tex_x = compute_texture_x(game, ray, tex);
 	if (tex_x < 0 || tex_x >= (int)tex->width)
 		return ;
-	render_textured_column(game, ray, tex, x, tex_x);
+	col.x = x;
+	col.tex_x = tex_x;
+	render_textured_column(game, ray, tex, col);
 }

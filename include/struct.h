@@ -29,6 +29,18 @@ typedef struct s_map
 	int			height;
 }	t_map;
 
+typedef struct s_flood_state
+{
+	int	*count;
+	int	*valid;
+}	t_floo_state;
+
+typedef struct s_column_info
+{
+	int	x;
+	int	tex_x;
+}	t_column_info;
+
 typedef struct s_player
 {
 	double	x;

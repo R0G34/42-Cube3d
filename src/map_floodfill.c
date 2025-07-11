@@ -55,33 +55,33 @@ static int	is_invalid_tile(char c)
 //20250603
 // Realiza un floodfill sobre el mapa para ver fugas
 // main -> init_game_window -> map_validate -> validate_walls -> flood_check
-static void	flood_check(char **map, int x, int y, int *count, int *valid)
+static void	flood_check(char **map, int x, int y, t_flood_state *state)
 {
 	if (y < 0 || map[y] == NULL || x < 0 || x >= (int)ft_strlen(map[y]))
 	{
-		*valid = 1;
+		*(state->valid) = 1;
 		return ;
 	}
-	if (*count >= 4000 || *valid != 0)
+	if (*(state->count) >= 4000 || *(state->valid) != 0)
 		return ;
-	(*count)++;
+	(*(state->count))++;
 	if (map[y][x] == ' ' || map[y][x] == '\0')
 	{
-		*valid = 1;
+		*(state->valid) = 1;
 		return ;
 	}
 	if (map[y][x] == '1' || map[y][x] == 'V')
 		return ;
 	if (is_invalid_tile(map[y][x]))
 	{
-		*valid = 1;
+		*(state->valid) = 1;
 		return ;
 	}
 	map[y][x] = 'V';
-	flood_check(map, x + 1, y, count, valid);
-	flood_check(map, x - 1, y, count, valid);
-	flood_check(map, x, y + 1, count, valid);
-	flood_check(map, x, y - 1, count, valid);
+	flood_check(map, x + 1, y, state);
+	flood_check(map, x - 1, y, state);
+	flood_check(map, x, y + 1, state);
+	flood_check(map, x, y - 1, state);
 }
 
 //20250603
@@ -89,19 +89,22 @@ static void	flood_check(char **map, int x, int y, int *count, int *valid)
 // main -> init_game_window -> map_validate -> validate_walls
 int	validate_walls(char **map, int start_x, int start_y)
 {
-	char	**map_copy;
-	int		valid;
-	int		count;
+	char			**map_copy;
+	int				valid;
+	int				count;
+	t_flood_state	state;
 
 	count = 0;
 	valid = 0;
+	state.count = &count;
+	state.valid = &valid;
 	map_copy = duplicate_map(map);
 	if (!map_copy)
 	{
 		print_error("Error: Failed to duplicate the map for validation.\n");
 		return (1);
 	}
-	flood_check(map_copy, start_x, start_y, &count, &valid);
+	flood_check(map_copy, start_x, start_y, &state);
 	free_map_copy(map_copy);
 	if (valid != 0 || count < 5 || count > 3999)
 	{
