@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abausa-v <abausa-v@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/03 09:22:05 by marvin            #+#    #+#             */
-/*   Updated: 2025/06/03 09:22:05 by marvin           ###   ########.fr       */
+/*   Created: 2025/07/15 13:06:49 by abausa-v          #+#    #+#             */
+/*   Updated: 2025/07/15 13:06:49 by abausa-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,10 @@ int	prevalidate_map_file(const char *filepath)
 	fd = open(filepath, O_RDONLY);
 	if (fd < 0)
 		return (perror("open"), 1);
-	while ((line = get_next_line(fd)))
+	line = get_next_line(fd);
+	while (line)
 	{
-		if (is_header_line(line))
-		{
-			free(line);
-			continue ;
-		}
-		if (!is_valid_map_line(line))
+		if (!is_header_line(line) && !is_valid_map_line(line))
 		{
 			print_error("Error: Invalid character in map.\n");
 			free(line);
@@ -73,6 +69,7 @@ int	prevalidate_map_file(const char *filepath)
 			return (1);
 		}
 		free(line);
+		line = get_next_line(fd);
 	}
 	close(fd);
 	return (0);

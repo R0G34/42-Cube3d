@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abausa-v <abausa-v@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:40:20 by ajodar-c          #+#    #+#             */
-/*   Updated: 2025/01/21 10:08:36 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/15 13:05:38 by abausa-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-//read function of file
 static char	*get_read(int fd, char *memory)
 {
 	ssize_t		bytesread;
@@ -35,7 +34,6 @@ static char	*get_read(int fd, char *memory)
 	return (free(nbuffer), memory);
 }
 
-//create a line with memory read
 static char	*get_line(char *memory)
 {
 	char	*line;

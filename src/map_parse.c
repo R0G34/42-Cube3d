@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_parseo.c                                       :+:      :+:    :+:   */
+/*   map_parse.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abausa-v <abausa-v@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/27 12:18:30 by marvin            #+#    #+#             */
-/*   Updated: 2025/05/27 12:18:30 by marvin           ###   ########.fr       */
+/*   Created: 2025/07/15 13:06:39 by abausa-v          #+#    #+#             */
+/*   Updated: 2025/07/15 13:06:39 by abausa-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ static char	**extract_textures_colors_maps(t_map *map, int *width,
 	tmp_map = malloc(sizeof(char *) * 1024);
 	if (!tmp_map)
 		return (NULL);
-	while ((line = get_next_line(fd)))
+	line = get_next_line(fd);
+	while (line)
 	{
 		if (parse_texture_colors(map, line) || !is_valid_map_line(line))
 			free(line);
@@ -90,6 +91,7 @@ static char	**extract_textures_colors_maps(t_map *map, int *width,
 				*width = len;
 			tmp_map[(*map_lines)++] = line;
 		}
+		line = get_next_line(fd);
 	}
 	return (tmp_map);
 }
