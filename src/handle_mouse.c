@@ -6,7 +6,7 @@
 /*   By: ajodar-c <ajodar-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 12:58:22 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/08 12:24:41 by ajodar-c         ###   ########.fr       */
+/*   Updated: 2025/07/15 14:46:09 by ajodar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,11 @@ static void	rotate_player(t_game *game, double rot_speed)
 
 void	recenter_mouse(void *param)
 {
-	t_game		*game;
+	t_game	*game;
 
 	game = (t_game *)param;
+	if (!game->mouse_enabled)
+		return ;
 	mlx_set_mouse_pos(game->mlx, WIDTH / 2, HEIGHT / 2);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abausa-v <abausa-v@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajodar-c <ajodar-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 10:13:42 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/15 11:53:31 by abausa-v         ###   ########.fr       */
+/*   Updated: 2025/07/15 14:46:06 by ajodar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ typedef struct s_game
 	t_player		player;
 	bool			solid_walls;
 	bool			is_running;
+	bool			mouse_enabled;
 	mlx_texture_t	*tex_no;
 	mlx_texture_t	*tex_so;
 	mlx_texture_t	*tex_we;

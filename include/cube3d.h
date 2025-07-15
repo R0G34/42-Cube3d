@@ -89,4 +89,5 @@ void		print_error(const char *format);
 void		build_texture_path(char *dest, const char *base, int index, \
 const char *ext);
 
+
 #endif

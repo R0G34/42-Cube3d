@@ -1,5 +1,5 @@
 # Basic setup
-NAME = cube3d
+NAME = cub3d
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -fPIE -Iinclude -Ilibs/MLX42-master/include -I/usr/include/GLFW
 CFLAGSSAN = -fsanitize=address -g

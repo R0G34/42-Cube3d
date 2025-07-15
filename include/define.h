@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajodar-c <ajodar-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 13:00:11 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/09 11:19:59 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/15 14:50:43 by ajodar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@
 
 # define DOORS_DELAY 4
 
-# define MINIMAP_SCALE 5
+# define MINIMAP_SCALE 10
 
 #endif

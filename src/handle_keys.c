@@ -6,7 +6,7 @@
 /*   By: ajodar-c <ajodar-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 14:02:17 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/08 11:36:25 by ajodar-c         ###   ########.fr       */
+/*   Updated: 2025/07/15 14:46:10 by ajodar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,22 @@ void	handle_speed_boost(t_game *game)
 		write(1, "Walk activated\n", 15);
 }
 
+static void	handle_mouse_enable(t_game *game)
+{
+	game->mouse_enabled = !game->mouse_enabled;
+	if (game->mouse_enabled)
+	{
+		mlx_set_cursor_mode(game->mlx, MLX_MOUSE_DISABLED);
+		printf("Mouse control: activated.\n");
+	}
+	else
+	{
+		mlx_set_cursor_mode(game->mlx, MLX_MOUSE_NORMAL);
+		printf("Mouse control: deactivated.\n");
+	}
+}
+
+
 void	handle_key(mlx_key_data_t keydata, void *param)
 {
 	t_game		*game;
@@ -53,4 +69,6 @@ void	handle_key(mlx_key_data_t keydata, void *param)
 		restart_light_anim(game);
 	if (keydata.key == MLX_KEY_3 && keydata.action == MLX_PRESS)
 		handle_speed_boost(game);
+	if (keydata.key == MLX_KEY_4 && keydata.action == MLX_PRESS)
+		handle_mouse_enable(game);
 }

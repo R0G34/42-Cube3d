@@ -6,7 +6,7 @@
 /*   By: ajodar-c <ajodar-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 12:40:13 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/08 11:47:51 by ajodar-c         ###   ########.fr       */
+/*   Updated: 2025/07/15 14:46:43 by ajodar-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,5 @@ void	rc_setup(t_game *game)
 	init_background(game);
 	game->solid_walls = true;
 	game->is_running = false;
+	game->mouse_enabled = false;
 }

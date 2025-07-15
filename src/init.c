@@ -19,7 +19,7 @@ static void	init_mlx(t_game *game)
 
 	minimap_height = game->map.height * MINIMAP_SCALE + 10;
 	total_height = HEIGHT + minimap_height;
-	game->mlx = mlx_init(WIDTH, total_height, "Terto3D", true);
+	game->mlx = mlx_init(WIDTH, total_height, "Cub3D", true);
 	if (!game->mlx)
 	{
 		print_error("Error: mlx_init failed\n");
