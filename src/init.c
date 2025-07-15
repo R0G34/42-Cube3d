@@ -67,7 +67,7 @@ void	init_background(t_game *game)
 void	init_game_window(t_game *game, char *map_path)
 {
 	map_setup(&game->map, map_path);
-	print_map(&game->map); // Debug temporal
+	print_map(&game->map);
 	map_validate(&game->map);
 	detect_doors(game);
 	init_player(game);

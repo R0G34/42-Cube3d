@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abausa-v <abausa-v@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 12:22:20 by ajodar-c          #+#    #+#             */
-/*   Updated: 2025/01/21 12:04:24 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/15 11:55:28 by abausa-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,8 @@ char	*get_join(char *buffer, char *nread)
 	j = 0;
 	if (buffer == NULL)
 		return (get_substr(nread, 0, get_strlen(nread)));
-	nbuffer = get_calloc(get_strlen(buffer) + get_strlen(nread) + 1, sizeof(char));
+	nbuffer = get_calloc(get_strlen(buffer) + get_strlen(nread) + 1,
+			sizeof(char));
 	if (nbuffer == NULL)
 		return (NULL);
 	while (buffer[i] != '\0')

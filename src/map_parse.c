@@ -67,7 +67,8 @@ static int	is_valid_map_line(const char *line)
 	return (0);
 }
 
-static char **extract_textures_colors_maps(t_map *map, int *width, int *map_lines, int fd)
+static char	**extract_textures_colors_maps(t_map *map, int *width,
+		int *map_lines, int fd)
 {
 	char	*line;
 	char	**tmp_map;
@@ -117,4 +118,3 @@ int	map_parse(t_map *map, char *map_path)
 	close(fd);
 	return (0);
 }
-

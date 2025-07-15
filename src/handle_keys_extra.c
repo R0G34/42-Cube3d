@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_keys_extra.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajodar <ajodar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abausa-v <abausa-v@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 10:40:47 by ajodar            #+#    #+#             */
-/*   Updated: 2025/07/10 21:22:43 by ajodar           ###   ########.fr       */
+/*   Updated: 2025/07/15 11:58:14 by abausa-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,3 @@ bool	is_inside_map(t_map *map, double x, double y)
 		return (false);
 	return (is_surroundings_valid(map, mx, my));
 }
-
