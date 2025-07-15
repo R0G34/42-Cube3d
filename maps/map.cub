@@ -1,13 +1,13 @@
-NO   ./textures/wall-bricks-blue
-SO    ./textures/wall-bricks-blue
+NO   ./textures/wall-bricks-blue.png
+SO    ./textures/wall-bricks-blue.png
 
 
-WE ./textures/wall-bricks-blue
+WE ./textures/wall-bricks-blue.png
 F 30,  60,90
 
 C 70,130,180
 
-EA ./textures/wall-bricks-blue
+EA ./textures/wall-bricks-blue.png
 
   110011 
  10000011 

@@ -52,8 +52,8 @@ void		rc_setup(t_game *game);
 void		perform_dda(t_ray *ray, t_game *game);
 void		draw_column(t_game *game, int x, t_ray *ray);
 void		render(void *param);
-void	render_textured_column(t_game *game, t_ray *ray, mlx_texture_t *tex,
-								t_column_info col);
+void		render_textured_column(t_game *game, t_ray *ray, mlx_texture_t *tex,
+				t_column_info col);
 void		draw_minimap(void *param);
 void		update_doors(void *param);
 
